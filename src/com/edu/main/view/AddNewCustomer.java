@@ -9,12 +9,12 @@ package com.edu.main.view;
  *
  * @author Gihan Chathuranga
  */
-public class AddNewProduct extends javax.swing.JInternalFrame {
+public class AddNewCustomer extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AddNewProduct
      */
-    public AddNewProduct() {
+    public AddNewCustomer() {
         initComponents();
     }
 
