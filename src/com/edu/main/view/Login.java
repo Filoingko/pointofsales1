@@ -19,8 +19,9 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         MainWindow mainWindow = new MainWindow();
-        mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        mainWindow.setUndecorated(true);
+        //mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //mainWindow.setUndecorated(true);
+        
         mainWindow.setVisible(true);
     }
 
@@ -79,7 +80,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login().setVisible(false);
             }
         });
     }
