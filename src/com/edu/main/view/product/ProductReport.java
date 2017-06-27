@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,7 +42,7 @@ public class ProductReport extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        showProductsTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
@@ -54,7 +56,7 @@ public class ProductReport extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Product report");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        showProductsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,7 +67,7 @@ public class ProductReport extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(showProductsTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,14 +132,24 @@ public class ProductReport extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable showProductsTable;
     // End of variables declaration//GEN-END:variables
 
     private void displayproducts() {
-        ProductReportDAO productReportDAO = new ProductReportDAO();
         try {
+            ProductReportDAO productReportDAO = new ProductReportDAO();
             ResultSet resultSet = productReportDAO.searchFromdb();
-        } catch (ClassNotFoundException ex) {
+            
+            if(resultSet==null){
+                JOptionPane.showMessageDialog(this,"No users added!");
+            }else{
+                DefaultTableModel model = (DefaultTableModel) showProductsTable.getModel();
+                model.setRowCount(0);
+                while(resultSet.next()){
+                    Object[] rowData={resultSet.getString("id"),resultSet.getString("name"),resultSet.getString("price"),resultSet.getString("type"),resultSet.getString("manufacture"),resultSet.getString("quantity")}; 
+                    model.addRow(rowData);
+                }
+            }   } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProductReport.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ProductReport.class.getName()).log(Level.SEVERE, null, ex);
