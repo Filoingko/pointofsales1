@@ -5,10 +5,35 @@
  */
 package com.edu.main.dao.customer;
 
+import com.edu.main.dbconnect.DBConnector;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Gihan Chathuranga
  */
 public class CustomerReportDAO {
+
+    public static Connection dbconnect() throws ClassNotFoundException, SQLException {
+        DBConnector dbConnector = new DBConnector();
+        Connection connection = dbConnector.connection();
+        return connection;
+    }
+    
+    public ResultSet searchFromdb() throws ClassNotFoundException, SQLException {
+        
+        Connection connection = dbconnect();
+        
+        String sql=" select * From customer;";
+        
+        Class.forName("com.mysql.jdbc.Driver");
+	Statement stm=connection.createStatement();
+	ResultSet result = stm.executeQuery(sql);
+        
+        return result;
+    }
     
 }

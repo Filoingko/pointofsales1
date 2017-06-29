@@ -254,15 +254,16 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cuscontactnoTextfieldActionPerformed
 
     private void cusdeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusdeleteButtonActionPerformed
-        // TODO add your handling code here:
-        String cusId = cusidTextfield.getText();
+        try {
+            // TODO add your handling code here:
+            String cusId = cusidTextfield.getText();
+            
+            DeleteCustomerDAO deleteCustomerDAO = new DeleteCustomerDAO();
+            DeleteCustomerfacade searchCustomerfacade = new DeleteCustomerfacade();
+            
+            int result = deleteCustomerDAO.deleteFromdb(cusId);
 
-        DeleteCustomerDAO deleteProductDAO = new DeleteCustomerDAO();
-        DeleteCustomerfacade searchProductfacade = new DeleteCustomerfacade();
-
-            int result = deleteProductDAO.searchFromdb(cusId);
-
-            if (searchProductfacade.checkUpdate(result)) {
+            if (searchCustomerfacade.checkUpdate(result)) {
                 JOptionPane.showInternalMessageDialog(rootPane, "Delete Sucess");
                 cusidTextfield.setText("");
                 cusnameTextfield.setText("");
@@ -273,6 +274,11 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
                 JOptionPane.showInternalMessageDialog(rootPane, "No Data Found");
                 
             }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_cusdeleteButtonActionPerformed
 

@@ -58,13 +58,13 @@ public class ProductReport extends javax.swing.JInternalFrame {
 
         showProductsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Product ID", "Name", "Price", "Type", "Manufacture", "Qty"
             }
         ));
         jScrollPane1.setViewportView(showProductsTable);
