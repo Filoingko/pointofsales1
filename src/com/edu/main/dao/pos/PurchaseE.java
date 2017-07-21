@@ -18,7 +18,7 @@ public class PurchaseE {
     private String proManufa;
     private String proQty;
 
-    public PurchaseE(String proId, String proName, String proPrice, String proType, String proManufa, String proQty) {
+    public PurchaseE(String proId, String proName, String proPrice, String proType, String proQty) {
         this.proId = proId;
         this.proName = proName;
         this.proPrice = proPrice;

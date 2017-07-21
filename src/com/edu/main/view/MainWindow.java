@@ -73,7 +73,6 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         customerreportButton = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -121,7 +120,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 100));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 110));
 
         javax.swing.GroupLayout displayDesktopPaneLayout = new javax.swing.GroupLayout(displayDesktopPane);
         displayDesktopPane.setLayout(displayDesktopPaneLayout);
@@ -131,10 +130,10 @@ public class MainWindow extends javax.swing.JFrame {
         );
         displayDesktopPaneLayout.setVerticalGroup(
             displayDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jPanel1.add(displayDesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 1370, 490));
+        jPanel1.add(displayDesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 1370, 460));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setPreferredSize(new java.awt.Dimension(1000, 100));
@@ -171,7 +170,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         productPanel.add(addproductbutton);
-        addproductbutton.setBounds(420, 10, 70, 60);
+        addproductbutton.setBounds(20, 10, 70, 60);
 
         productreportButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gihan Chathuranga\\Desktop\\Temp\\DEF.png")); // NOI18N
         productreportButton.setText("jLabel1");
@@ -183,7 +182,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         productPanel.add(productreportButton);
-        productreportButton.setBounds(320, 10, 70, 60);
+        productreportButton.setBounds(420, 10, 70, 60);
 
         searchproductButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gihan Chathuranga\\Desktop\\Temp\\DEF.png")); // NOI18N
         searchproductButton.setText("jLabel1");
@@ -195,7 +194,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         productPanel.add(searchproductButton);
-        searchproductButton.setBounds(220, 10, 70, 60);
+        searchproductButton.setBounds(130, 10, 70, 60);
 
         updateproductButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gihan Chathuranga\\Desktop\\Temp\\DEF.png")); // NOI18N
         updateproductButton.setText("jLabel1");
@@ -207,7 +206,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         productPanel.add(updateproductButton);
-        updateproductButton.setBounds(120, 10, 70, 60);
+        updateproductButton.setBounds(230, 10, 70, 60);
 
         deleteproductButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gihan Chathuranga\\Desktop\\Temp\\DEF.png")); // NOI18N
         deleteproductButton.setText("jLabel1");
@@ -219,7 +218,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         productPanel.add(deleteproductButton);
-        deleteproductButton.setBounds(20, 10, 70, 60);
+        deleteproductButton.setBounds(330, 10, 70, 60);
 
         jPanel3.add(productPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 104));
 
@@ -369,20 +368,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1370, 110));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1370, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 1370, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 710));
 
         fileMenu.setText("File");
 
@@ -712,7 +698,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel posButton;
