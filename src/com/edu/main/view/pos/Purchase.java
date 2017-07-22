@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 public class Purchase extends javax.swing.JInternalFrame {
 
     public ArrayList<PurchaseE> tempList = new ArrayList<>();
+    String cusId;
     /**
      * Creates new form Purchase
      */
@@ -66,6 +67,7 @@ public class Purchase extends javax.swing.JInternalFrame {
         customerPanel2 = new javax.swing.JPanel();
         customerIDButton = new javax.swing.JButton();
         cusnameLable = new javax.swing.JLabel();
+        cusidLable = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -185,7 +187,7 @@ public class Purchase extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "CID", "PID", "Quantity", "Unit Price", "Total Price"
+                "PID", "Name", "Quantity", "Unit Price", "Total Price"
             }
         ));
         jScrollPane1.setViewportView(paymentTable);
@@ -196,7 +198,7 @@ public class Purchase extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -207,7 +209,7 @@ public class Purchase extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 122, 596, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 122, 590, -1));
 
         customerPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Customer"));
 
@@ -225,9 +227,11 @@ public class Purchase extends javax.swing.JInternalFrame {
             .addGroup(customerPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(customerIDButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cusidLable, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cusnameLable, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(162, 162, 162))
+                .addGap(67, 67, 67))
         );
         customerPanel2Layout.setVerticalGroup(
             customerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,6 +239,7 @@ public class Purchase extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(customerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(customerIDButton, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(cusidLable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cusnameLable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -271,17 +276,23 @@ public class Purchase extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_proquantityTextfieldActionPerformed
 
     private void addtocartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addtocartButtonActionPerformed
-        String proId = proidTextfield.getText();
-        String proName = pronameTextfield.getText();
-        String proPrice = propriceTextfield.getText();
-        String proType = protypeTextfield.getText();
-        //String proManufa = promanufaTextfield.getText();
-        String proQty = proquantityTextfield.getText();
-
-        PurchaseE purchaseE = new PurchaseE(proId, proName, proPrice, proType, proQty);
-        tempList.add(purchaseE);
-
-        System.out.println(tempList.size());
+        try {
+            String proId = proidTextfield.getText();
+            String proName = pronameTextfield.getText();
+            String proPrice = propriceTextfield.getText();
+            String proType = protypeTextfield.getText();
+            //String proManufa = promanufaTextfield.getText();
+            String proQty = proquantityTextfield.getText();
+            
+            
+            PurchaseDAO purchaseDAO = new PurchaseDAO();
+            int result = purchaseDAO.addToDB(proId,proName,proPrice,proType,proQty);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_addtocartButtonActionPerformed
 
     private void protypeTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protypeTextfieldActionPerformed
@@ -339,11 +350,12 @@ public class Purchase extends javax.swing.JInternalFrame {
         customerPanel.setVisible(false);
         productdetailPanel.setVisible(true);
         customerPanel2.setVisible(true);
+        cusnameLable.setText(" ");
     }//GEN-LAST:event_guestcustomerButtonActionPerformed
 
     private void cusearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusearchButtonActionPerformed
         try {
-            String cusId = cusidTextfield.getText();
+            cusId = cusidTextfield.getText();
 
             PurchaseDAO purchaseDAO = new PurchaseDAO();
             Purchasefacade searchCustomerfacade = new Purchasefacade();
@@ -353,6 +365,7 @@ public class Purchase extends javax.swing.JInternalFrame {
             if (searchCustomerfacade.checkAvailability(resultSet)) {
                 addtocartButton.enable(false);
                 customerPanel.setVisible(false);
+                customerPanel2.setVisible(true);
                 productdetailPanel.setVisible(true);
                 cusnameLable.setText(resultSet.getString("name"));
             } else {
@@ -369,6 +382,7 @@ public class Purchase extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addtocartButton;
     private javax.swing.JButton cusearchButton;
+    private javax.swing.JLabel cusidLable;
     private javax.swing.JTextField cusidTextfield;
     private javax.swing.JLabel cusnameLable;
     private javax.swing.JButton customerIDButton;
