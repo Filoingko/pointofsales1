@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Purchase extends javax.swing.JInternalFrame {
 
     public ArrayList<PurchaseE> tempList = new ArrayList<>();
     String cusId;
+
     /**
      * Creates new form Purchase
      */
@@ -63,7 +65,10 @@ public class Purchase extends javax.swing.JInternalFrame {
         proquantityTextfield = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        paymentTable = new javax.swing.JTable();
+        cartTable = new javax.swing.JTable();
+        totalTextfield = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        payButton = new javax.swing.JButton();
         customerPanel2 = new javax.swing.JPanel();
         customerIDButton = new javax.swing.JButton();
         cusnameLable = new javax.swing.JLabel();
@@ -182,7 +187,7 @@ public class Purchase extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Items in Cart"));
 
-        paymentTable.setModel(new javax.swing.table.DefaultTableModel(
+        cartTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -190,7 +195,16 @@ public class Purchase extends javax.swing.JInternalFrame {
                 "PID", "Name", "Quantity", "Unit Price", "Total Price"
             }
         ));
-        jScrollPane1.setViewportView(paymentTable);
+        jScrollPane1.setViewportView(cartTable);
+
+        jLabel6.setText("Total Amount");
+
+        payButton.setText("Pay");
+        payButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -200,12 +214,25 @@ public class Purchase extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(totalTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(payButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalTextfield)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(payButton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -283,11 +310,17 @@ public class Purchase extends javax.swing.JInternalFrame {
             String proType = protypeTextfield.getText();
             //String proManufa = promanufaTextfield.getText();
             String proQty = proquantityTextfield.getText();
-            
-            
+
             PurchaseDAO purchaseDAO = new PurchaseDAO();
-            int result = purchaseDAO.addToDB(proId,proName,proPrice,proType,proQty);
-            
+            int result = purchaseDAO.addToDB(proId, proName, proPrice, proType, proQty);
+
+            Purchasefacade purchasefacade = new Purchasefacade();
+            if (purchasefacade.checkAdd(result)) {
+                updatecart();
+            } else {
+                JOptionPane.showInternalMessageDialog(rootPane, "Error");
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -378,9 +411,28 @@ public class Purchase extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cusearchButtonActionPerformed
 
+    private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
+        try {
+            PurchaseDAO purchaseDAO = new PurchaseDAO(); 
+            int result = purchaseDAO.payBill(cusId);
+            
+            Purchasefacade purchasefacade = new Purchasefacade();
+            if(purchasefacade.checkAdd(result)){
+                purchaseDAO.clearCart(); 
+            }else{
+               JOptionPane.showInternalMessageDialog(rootPane, "Error"); 
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_payButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addtocartButton;
+    private javax.swing.JTable cartTable;
     private javax.swing.JButton cusearchButton;
     private javax.swing.JLabel cusidLable;
     private javax.swing.JTextField cusidTextfield;
@@ -395,11 +447,12 @@ public class Purchase extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable paymentTable;
+    private javax.swing.JButton payButton;
     private javax.swing.JPanel productdetailPanel;
     private javax.swing.JButton productsearchButton;
     private javax.swing.JTextField proidTextfield;
@@ -407,9 +460,31 @@ public class Purchase extends javax.swing.JInternalFrame {
     private javax.swing.JTextField propriceTextfield;
     private javax.swing.JTextField proquantityTextfield;
     private javax.swing.JTextField protypeTextfield;
+    private javax.swing.JTextField totalTextfield;
     // End of variables declaration//GEN-END:variables
 
-public ArrayList<PurchaseE> getList(){
-    return tempList;
-}
+    public ArrayList<PurchaseE> getList() {
+        return tempList;
+    }
+
+    private void updatecart() {
+        try {
+            PurchaseDAO cusReportDAO = new PurchaseDAO();
+            ResultSet resultSet = cusReportDAO.searchFromdb();
+            int total = 0;
+
+            DefaultTableModel model = (DefaultTableModel) cartTable.getModel();
+            model.setRowCount(0);
+            while (resultSet.next()) {
+                Object[] rowData = {resultSet.getString("pid"), resultSet.getString("name"), resultSet.getString("qty"), resultSet.getString("unit_price"), resultSet.getString("total_price")};
+                total = total + Integer.parseInt(resultSet.getString("total_price"));
+                model.addRow(rowData);
+            }
+            totalTextfield.setText(Integer.toString(total));
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

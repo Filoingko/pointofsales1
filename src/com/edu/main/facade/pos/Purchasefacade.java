@@ -20,4 +20,12 @@ public class Purchasefacade {
             return false;
         }
     }
+    
+    public boolean checkAdd(int result) throws SQLException {
+        if(result > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -63,7 +65,6 @@ public class PurchaseDAO {
         Statement stm = connection.createStatement();
         int result1 = stm.executeUpdate(sql);
 
-        
         sql = "select quantity from products where id = '" + proId + "'";
         Class.forName("com.mysql.jdbc.Driver");
         stm = connection.createStatement();
@@ -73,13 +74,56 @@ public class PurchaseDAO {
             quentity = Double.parseDouble(resultset.getString("quantity"));
         }
         quentity = quentity - proQty1;
-        
+
         sql = "Update products  set quantity = ? where id=?";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setObject(1, quentity);
         pstm.setObject(2, proId);
         int result2 = pstm.executeUpdate();
-        
-        return result1;
+
+        return result2;
+    }
+
+    public ResultSet searchFromdb() throws ClassNotFoundException, SQLException {
+        Connection connection = dbconnect();
+
+        String sql = " select * From tempurches;";
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Statement stm = connection.createStatement();
+        ResultSet result = stm.executeQuery(sql);
+
+        return result;
+    }
+
+    public int payBill(String cusId) throws ClassNotFoundException, SQLException {
+        Connection connection = dbconnect();
+        String sql = " select * From tempurches;";
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Statement stm = connection.createStatement();
+        ResultSet resultSet = stm.executeQuery(sql);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+
+        int result = 0;
+        while (resultSet.next()) {
+            sql = "insert into purches values (?,?,?,?,?,?)";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setObject(1, "00");
+            pstm.setObject(2, resultSet.getString("pid"));
+            pstm.setObject(3, cusId);
+            pstm.setObject(4, resultSet.getString("qty"));
+            pstm.setObject(5, resultSet.getString("total_price"));
+            pstm.setObject(6, dtf.format(localDate));
+
+            result = pstm.executeUpdate();
+        }
+        return result;
+    }
+
+    public void clearCart() {
+       
     }
 }
