@@ -22,11 +22,11 @@ public class DeleteCustomerDAO {
         return connection;
     }
     
-    public int deleteFromdb(String proId) throws ClassNotFoundException, SQLException {
+    public int deleteFromdb(String cusId) throws ClassNotFoundException, SQLException {
         
         Connection connection = dbconnect();
         
-        String sql=" delete From products where id = '"+proId+"'";
+        String sql=" delete From customer where id = '"+cusId+"'";
         
         Class.forName("com.mysql.jdbc.Driver");
         Statement stm=connection.createStatement();

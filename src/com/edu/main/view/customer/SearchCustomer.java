@@ -10,10 +10,13 @@ import com.edu.main.dao.product.SearchProductDAO;
 import com.edu.main.facade.customer.SearchCustomerfacade;
 import com.edu.main.facade.product.SearchProductfacade;
 import com.edu.main.view.product.SearchProduct;
+import com.edu.main.view.product.UpdateProduct;
+import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +30,7 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
      */
     public SearchCustomer() {
         initComponents();
+        errorText.setVisible(false);
     }
 
     /**
@@ -54,6 +58,7 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         cusedditButton = new javax.swing.JButton();
         cussearchButton = new javax.swing.JButton();
+        errorText = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
@@ -79,6 +84,8 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel3.setText("Name            : ");
 
+        cusnameTextfield.setEditable(false);
+        cusnameTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cusnameTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cusnameTextfieldActionPerformed(evt);
@@ -88,6 +95,8 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel4.setText("CNIC           :");
 
+        cusCNICTextfield.setEditable(false);
+        cusCNICTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cusCNICTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cusCNICTextfieldActionPerformed(evt);
@@ -97,6 +106,8 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel5.setText("E-mail           :");
 
+        cusemailTextfield.setEditable(false);
+        cusemailTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cusemailTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cusemailTextfieldActionPerformed(evt);
@@ -106,6 +117,8 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel6.setText("Contact No    :");
 
+        cuscontactnoTextfield.setEditable(false);
+        cuscontactnoTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cuscontactnoTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuscontactnoTextfieldActionPerformed(evt);
@@ -115,6 +128,11 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         jButton2.setText("Cancle");
 
         cusedditButton.setText("Edit");
+        cusedditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cusedditButtonActionPerformed(evt);
+            }
+        });
 
         cussearchButton.setText("Search");
         cussearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,19 +141,18 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
             }
         });
 
+        errorText.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        errorText.setForeground(new java.awt.Color(255, 0, 0));
+        errorText.setText("Enter customer ID");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cusedditButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,38 +168,45 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cusidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cussearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(cussearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cusedditButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addComponent(errorText, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cusidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cussearchButton))
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cusnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cusCNICTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cusemailTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cuscontactnoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cuscontactnoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addComponent(errorText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(cusedditButton))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -255,6 +279,7 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         SearchCustomerDAO searchCustomerDAO = new SearchCustomerDAO();
         SearchCustomerfacade searchCustomerfacade = new SearchCustomerfacade();
         try {
+            if(!cusId.equals("")){
             ResultSet resultSet = searchCustomerDAO.searchFromdb(cusId);
 
             if (searchCustomerfacade.checkAvailability(resultSet)) {
@@ -265,8 +290,13 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
                 cuscontactnoTextfield.setText(resultSet.getString("contact_no"));
                 cusedditButton.setEnabled(true);
             } else {
-                JOptionPane.showInternalMessageDialog(rootPane, "No Data Found");
+                JOptionPane.showMessageDialog(null,
+                        "<html><div color=red>No Data Found!", "Message", JOptionPane.ERROR_MESSAGE);
                 cusedditButton.setEnabled(false);
+                errorText.setVisible(false);
+            }
+            }else{
+                errorText.setVisible(true);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SearchProduct.class.getName()).log(Level.SEVERE, null, ex);
@@ -275,6 +305,28 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_cussearchButtonActionPerformed
+
+    private void cusedditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusedditButtonActionPerformed
+        String cusId = cusidTextfield.getText();
+        String cusName = cusnameTextfield.getText();
+        String cusNIC = cusCNICTextfield.getText();
+        String cusEmail = cusemailTextfield.getText();
+        String cusContactno = cuscontactnoTextfield.getText();
+        
+        
+        UpdateCustomer updateCustomer = new UpdateCustomer();
+        JDesktopPane mainWindow = getDesktopPane();
+        
+        Dimension desktopSize = mainWindow.getSize();
+        Dimension InternalFrameSize = updateCustomer.getSize();
+        updateCustomer.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
+        mainWindow.add(updateCustomer);
+        updateCustomer.setVisible(true);
+        updateCustomer.updatesearchbuttonactionperformed(cusId);
+        this.dispose();
+    }//GEN-LAST:event_cusedditButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -285,6 +337,7 @@ public class SearchCustomer extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cusidTextfield;
     private javax.swing.JTextField cusnameTextfield;
     private javax.swing.JButton cussearchButton;
+    private javax.swing.JLabel errorText;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

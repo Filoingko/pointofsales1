@@ -29,6 +29,7 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
      */
     public UpdateCustomer() {
         initComponents();
+        errorText.setVisible(false);
     }
 
     /**
@@ -53,10 +54,11 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         cusemailTextfield = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cuscontactnoTextfield = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cussaveButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        errorText = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
@@ -68,7 +70,7 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Usuzi", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("update customer informatation");
+        jLabel1.setText("edit customer informatation");
 
         jLabel2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel2.setText("ID                : ");
@@ -115,10 +117,10 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Reset");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                resetButtonActionPerformed(evt);
             }
         });
 
@@ -138,19 +140,16 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
             }
         });
 
+        errorText.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        errorText.setForeground(new java.awt.Color(255, 0, 0));
+        errorText.setText("Error!");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cussaveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -161,14 +160,24 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cusnameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                            .addComponent(cusnameTextfield)
                             .addComponent(cusCNICTextfield)
                             .addComponent(cusemailTextfield)
                             .addComponent(cuscontactnoTextfield)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(cusidTextfield)
+                                .addComponent(cusidTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)))))
+                                .addComponent(jButton4))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cussaveButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(resetButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2))
+                            .addComponent(errorText, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -195,12 +204,14 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cuscontactnoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(18, 18, 18)
+                .addComponent(errorText, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
+                    .addComponent(resetButton)
                     .addComponent(cussaveButton))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -211,10 +222,10 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
                 .addGap(85, 85, 85)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +234,7 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -233,7 +244,7 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,13 +274,97 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cuscontactnoTextfieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        cusidTextfield.setText("");
+        cusnameTextfield.setText("");
+        cusCNICTextfield.setText("");
+        cusemailTextfield.setText("");
+        cuscontactnoTextfield.setText("");
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String cusId = cusidTextfield.getText();
 
+        updatesearchbuttonactionperformed(cusId);
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void cussaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cussaveButtonActionPerformed
+        String cusId = cusidTextfield.getText();
+        String cusName = cusnameTextfield.getText();
+        String cusNIC = cusCNICTextfield.getText();
+        String cusEmail = cusemailTextfield.getText();
+        String cusContactno = cuscontactnoTextfield.getText();
+
+        UpdateCustomerDAO updateCustomerDAO = new UpdateCustomerDAO();
+        UpdateCustomerfacade updateCustomer = new UpdateCustomerfacade();
+        AddNewCustomerfacade addNewCustomer = new AddNewCustomerfacade();
+        int result;
+        try {
+
+            if (!(cusId.equals("")) && !(cusName.equals("")) && !(cusNIC.equals("")) && !(cusEmail.equals("")) && !(cusContactno.equals(""))) {
+                if (addNewCustomer.checkInt(cusNIC)) {
+                    if (addNewCustomer.validateEmail(cusEmail)) {
+                        if (addNewCustomer.checkInt(cusContactno)) {
+                            result = updateCustomerDAO.addTodb(cusId, cusName, cusNIC, cusEmail, cusContactno);
+
+                            if (updateCustomer.checkUpdate(result)) {
+                                JOptionPane.showInternalMessageDialog(this, "Update Success");
+                                cusidTextfield.setText("");
+                                cusnameTextfield.setText("");
+                                cusCNICTextfield.setText("");
+                                cusemailTextfield.setText("");
+                                cuscontactnoTextfield.setText("");
+                                errorText.setVisible(false);
+                            } else {
+                                JOptionPane.showInternalMessageDialog(this, "Update Faield");
+                            }
+                        } else {
+                            errorText.setText("Wrong Contact Number");
+                            errorText.setVisible(true);
+                        }
+                    } else {
+                        errorText.setText("Wrong email address");
+                        errorText.setVisible(true);
+                    }
+                } else {
+                    errorText.setText("Wrong CusNIC");
+                    errorText.setVisible(true);
+                }
+            } else {
+                errorText.setText("Enter All Fields");
+                errorText.setVisible(true);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddNewCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddNewCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cussaveButtonActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cusCNICTextfield;
+    private javax.swing.JTextField cuscontactnoTextfield;
+    private javax.swing.JTextField cusemailTextfield;
+    private javax.swing.JTextField cusidTextfield;
+    private javax.swing.JTextField cusnameTextfield;
+    private javax.swing.JButton cussaveButton;
+    private javax.swing.JLabel errorText;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton resetButton;
+    // End of variables declaration//GEN-END:variables
+
+    public void updatesearchbuttonactionperformed(String cusId) {
         cusidTextfield.setText("");
         cusnameTextfield.setText("");
         cusCNICTextfield.setText("");
@@ -295,52 +390,5 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SearchProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void cussaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cussaveButtonActionPerformed
-        String cusId = cusidTextfield.getText();
-        String cusName = cusnameTextfield.getText();
-        String cusNIC = cusCNICTextfield.getText();
-        String cusEmail = cusemailTextfield.getText();
-        String cusContactno = cuscontactnoTextfield.getText();
-
-        UpdateCustomerDAO updateCustomerDAO = new UpdateCustomerDAO();
-
-        int result;
-        try {
-            result = updateCustomerDAO.addTodb(cusId, cusName, cusNIC, cusEmail, cusContactno);
-
-            UpdateCustomerfacade updateCustomer = new UpdateCustomerfacade();
-            if (updateCustomer.checkUpdate(result)) {
-                System.out.println("Sucess");
-            } else {
-                System.out.println("Faield");
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddNewCustomer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AddNewCustomer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_cussaveButtonActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cusCNICTextfield;
-    private javax.swing.JTextField cuscontactnoTextfield;
-    private javax.swing.JTextField cusemailTextfield;
-    private javax.swing.JTextField cusidTextfield;
-    private javax.swing.JTextField cusnameTextfield;
-    private javax.swing.JButton cussaveButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    // End of variables declaration//GEN-END:variables
+    }
 }

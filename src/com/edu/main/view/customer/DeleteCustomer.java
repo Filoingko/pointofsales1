@@ -29,6 +29,7 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
      */
     public DeleteCustomer() {
         initComponents();
+        errorText.setVisible(false);
     }
 
     /**
@@ -56,6 +57,7 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
         cusdeleteButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cussearchButton = new javax.swing.JButton();
+        errorText = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
@@ -81,6 +83,8 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel3.setText("Name            : ");
 
+        cusnameTextfield.setEditable(false);
+        cusnameTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cusnameTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cusnameTextfieldActionPerformed(evt);
@@ -90,6 +94,8 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel4.setText("CNIC           : ");
 
+        cusCNICTextfield.setEditable(false);
+        cusCNICTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cusCNICTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cusCNICTextfieldActionPerformed(evt);
@@ -99,6 +105,8 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel5.setText("E-mail           : ");
 
+        cusemailTextfield.setEditable(false);
+        cusemailTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cusemailTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cusemailTextfieldActionPerformed(evt);
@@ -108,6 +116,8 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel6.setText("Contact No    : ");
 
+        cuscontactnoTextfield.setEditable(false);
+        cuscontactnoTextfield.setBackground(new java.awt.Color(255, 255, 255));
         cuscontactnoTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuscontactnoTextfieldActionPerformed(evt);
@@ -130,20 +140,18 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
             }
         });
 
+        errorText.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        errorText.setForeground(new java.awt.Color(255, 0, 0));
+        errorText.setText("Enter customer ID");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cusdeleteButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addGap(5, 5, 5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -159,7 +167,13 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cusidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cussearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(cussearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(errorText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(cusdeleteButton)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton2))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -170,40 +184,40 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(cusidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cussearchButton))
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cusnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cusCNICTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(cusemailTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(cuscontactnoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(18, 18, 18)
+                .addComponent(errorText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cusdeleteButton)
-                    .addComponent(jButton2))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(cusdeleteButton))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80))
         );
         jPanel1Layout.setVerticalGroup(
@@ -259,11 +273,11 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
             String cusId = cusidTextfield.getText();
             
             DeleteCustomerDAO deleteCustomerDAO = new DeleteCustomerDAO();
-            DeleteCustomerfacade searchCustomerfacade = new DeleteCustomerfacade();
+            DeleteCustomerfacade deleteCustomerfacade = new DeleteCustomerfacade();
             
             int result = deleteCustomerDAO.deleteFromdb(cusId);
 
-            if (searchCustomerfacade.checkUpdate(result)) {
+            if (deleteCustomerfacade.checkUpdate(result)) {
                 JOptionPane.showInternalMessageDialog(rootPane, "Delete Sucess");
                 cusidTextfield.setText("");
                 cusnameTextfield.setText("");
@@ -294,6 +308,7 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
         SearchCustomerDAO searchCustomerDAO = new SearchCustomerDAO();
         SearchCustomerfacade searchCustomerfacade = new SearchCustomerfacade();
         try {
+            if(!cusId.equals("")){
             ResultSet resultSet = searchCustomerDAO.searchFromdb(cusId);
 
             if (searchCustomerfacade.checkAvailability(resultSet)) {
@@ -302,8 +317,14 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
                 cusCNICTextfield.setText(Integer.toString(resultSet.getInt("cnic")));
                 cusemailTextfield.setText(resultSet.getString("e_mail"));
                 cuscontactnoTextfield.setText(resultSet.getString("contact_no"));
+                errorText.setVisible(false);
             } else {
-                JOptionPane.showInternalMessageDialog(rootPane, "No Data Found");
+                JOptionPane.showMessageDialog(null,
+                        "<html><div color=red>No Data Found!", "Message", JOptionPane.ERROR_MESSAGE);
+                errorText.setVisible(false);
+            }
+            }else{
+                errorText.setVisible(true);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SearchProduct.class.getName()).log(Level.SEVERE, null, ex);
@@ -321,6 +342,7 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cusidTextfield;
     private javax.swing.JTextField cusnameTextfield;
     private javax.swing.JButton cussearchButton;
+    private javax.swing.JLabel errorText;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
