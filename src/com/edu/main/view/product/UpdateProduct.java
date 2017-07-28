@@ -28,6 +28,7 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
      */
     public UpdateProduct() {
         initComponents();
+        errormassageText.setVisible(false);
     }
 
     /**
@@ -54,22 +55,23 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
         promanufaTextfield = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         proquantityTextfield = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        errormassageText = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
         setOpaque(true);
-        setPreferredSize(new java.awt.Dimension(883, 450));
+        setPreferredSize(new java.awt.Dimension(1021, 461));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Usuzi", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("update Product infomation");
+        jLabel1.setText("eddit Product infomation");
 
         jLabel2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel2.setText("ID                : ");
@@ -125,10 +127,10 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Reset");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                resetButtonActionPerformed(evt);
             }
         });
 
@@ -147,6 +149,9 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        errormassageText.setForeground(new java.awt.Color(255, 0, 0));
+        errormassageText.setText("Enter All Fields");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -174,11 +179,12 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
                                 .addComponent(propriceTextfield)
                                 .addComponent(protypeTextfield)
                                 .addComponent(promanufaTextfield)
-                                .addComponent(proquantityTextfield))))
+                                .addComponent(proquantityTextfield))
+                            .addComponent(errormassageText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(resetButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
                 .addContainerGap(69, Short.MAX_VALUE))
@@ -211,12 +217,14 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(proquantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
+                .addComponent(errormassageText, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
+                    .addComponent(resetButton)
                     .addComponent(jButton3))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -226,8 +234,10 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -281,13 +291,94 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_proquantityTextfieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        proidTextfield.setText("");
+        pronameTextfield.setText("");
+        propriceTextfield.setText("");
+        protypeTextfield.setText("");
+        promanufaTextfield.setText("");
+        proquantityTextfield.setText("");
+        errormassageText.setVisible(false);
+        proidTextfield.setEditable(true);
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String proId = proidTextfield.getText();
+        updatesearchbuttonactionperformed(proId);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String proId = proidTextfield.getText();
+        String prString = proidTextfield.getName();
+        String proName = pronameTextfield.getText();
+        String proPrice = propriceTextfield.getText();
+        String proType = protypeTextfield.getText();
+        String proManufa = promanufaTextfield.getText();
+        String proQty = proquantityTextfield.getText();
+
+        UpdateProductDAO updateProductDAO = new UpdateProductDAO();
+        UpdateProductfacade updateProduct = new UpdateProductfacade();
+        AddNewProductDAO addNewProductDAO = new AddNewProductDAO();
+        AddNewProductfacade addNewProductfacade = new AddNewProductfacade();
+        int result;
+        try {
+            if (!(proId.equals("")) && !(proId.equals("")) && !(proId.equals("")) && !(proId.equals("")) && !(proId.equals("")) && !(proId.equals("")) && !(proId.equals(""))) {
+                if (addNewProductfacade.checkDouble(proPrice) && addNewProductfacade.checkDouble(proQty)) {
+                    result = updateProductDAO.addTodb(proId, proName, proPrice, proType, proManufa, proQty);
+                    if (updateProduct.checkUpdate(result)) {
+                        JOptionPane.showInternalMessageDialog(this, "Update Sucess");
+                        proidTextfield.setText("");
+                        pronameTextfield.setText("");
+                        propriceTextfield.setText("");
+                        protypeTextfield.setText("");
+                        promanufaTextfield.setText("");
+                        proquantityTextfield.setText("");
+                        proidTextfield.setEditable(true);
+                        errormassageText.setVisible(false);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Update Faield");
+                    }
+                }else{
+                    errormassageText.setText("Wrong format of data");
+                errormassageText.setVisible(true);
+                }
+            }else{
+                errormassageText.setVisible(true);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UpdateProduct.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateProduct.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errormassageText;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField proidTextfield;
+    private javax.swing.JTextField promanufaTextfield;
+    private javax.swing.JTextField pronameTextfield;
+    private javax.swing.JTextField propriceTextfield;
+    private javax.swing.JTextField proquantityTextfield;
+    private javax.swing.JTextField protypeTextfield;
+    private javax.swing.JButton resetButton;
+    // End of variables declaration//GEN-END:variables
+
+    public void updatesearchbuttonactionperformed(String proId) {
         proidTextfield.setText("");
         pronameTextfield.setText("");
         propriceTextfield.setText("");
@@ -307,6 +398,8 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
                 protypeTextfield.setText(resultSet.getString("type"));
                 promanufaTextfield.setText(resultSet.getString("manufacture"));
                 proquantityTextfield.setText(Double.toString(resultSet.getDouble("quantity")));
+                proidTextfield.setEditable(false);
+
             } else {
                 JOptionPane.showInternalMessageDialog(rootPane, "No Data Found");
 
@@ -316,56 +409,5 @@ public class UpdateProduct extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SearchProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String proId = proidTextfield.getText();
-        String prString = proidTextfield.getName();
-        String proName = pronameTextfield.getText();
-        String proPrice = propriceTextfield.getText();
-        String proType = protypeTextfield.getText();
-        String proManufa = promanufaTextfield.getText();
-        String proQty = proquantityTextfield.getText();
-
-        UpdateProductDAO updateProductDAO = new UpdateProductDAO();
-        UpdateProductfacade updateProduct = new UpdateProductfacade();
-        int result;
-        try {
-            result = updateProductDAO.addTodb(proId, proName, proPrice, proType, proManufa, proQty);
-            if (updateProduct.checkUpdate(result)) {
-                System.out.println("Sucess");
-            } else {
-                System.out.println("Faield");
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UpdateProduct.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(UpdateProduct.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField proidTextfield;
-    private javax.swing.JTextField promanufaTextfield;
-    private javax.swing.JTextField pronameTextfield;
-    private javax.swing.JTextField propriceTextfield;
-    private javax.swing.JTextField proquantityTextfield;
-    private javax.swing.JTextField protypeTextfield;
-    // End of variables declaration//GEN-END:variables
+    }
 }

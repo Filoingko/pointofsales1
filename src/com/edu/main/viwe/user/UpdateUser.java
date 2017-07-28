@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.edu.main.view.customer;
+package com.edu.main.viwe.user;
 
 import com.edu.main.dao.customer.AddNewCustomerDAO;
 import com.edu.main.dao.customer.SearchCustomerDAO;
 import com.edu.main.dao.customer.UpdateCustomerDAO;
+import com.edu.main.dao.user.UpdateUserDAO;
 import com.edu.main.facade.customer.AddNewCustomerfacade;
 import com.edu.main.facade.customer.SearchCustomerfacade;
 import com.edu.main.facade.customer.UpdateCustomerfacade;
+import com.edu.main.view.customer.AddNewCustomer;
 import com.edu.main.view.product.SearchProduct;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,12 +24,12 @@ import javax.swing.JOptionPane;
  *
  * @author Gihan Chathuranga
  */
-public class UpdateCustomer extends javax.swing.JInternalFrame {
+public class UpdateUser extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AddNewProduct
      */
-    public UpdateCustomer() {
+    public UpdateUser() {
         initComponents();
     }
 
@@ -44,19 +46,17 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        cusidTextfield = new javax.swing.JTextField();
+        useridTextfield = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cusnameTextfield = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        cusCNICTextfield = new javax.swing.JTextField();
+        usernameTextfield = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        cusemailTextfield = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cuscontactnoTextfield = new javax.swing.JTextField();
+        usertypeTextfield = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cussaveButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        userpwdField = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
@@ -68,50 +68,35 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Usuzi", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("update customer informatation");
+        jLabel1.setText("update user informatation");
 
         jLabel2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel2.setText("ID                : ");
 
-        cusidTextfield.addActionListener(new java.awt.event.ActionListener() {
+        useridTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cusidTextfieldActionPerformed(evt);
+                useridTextfieldActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel3.setText("Name            : ");
 
-        cusnameTextfield.addActionListener(new java.awt.event.ActionListener() {
+        usernameTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cusnameTextfieldActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
-        jLabel4.setText("CNIC           : ");
-
-        cusCNICTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cusCNICTextfieldActionPerformed(evt);
+                usernameTextfieldActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
-        jLabel5.setText("E-mail           : ");
-
-        cusemailTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cusemailTextfieldActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("password       : ");
 
         jLabel6.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
-        jLabel6.setText("Contact No    : ");
+        jLabel6.setText("Type    : ");
 
-        cuscontactnoTextfield.addActionListener(new java.awt.event.ActionListener() {
+        usertypeTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cuscontactnoTextfieldActionPerformed(evt);
+                usertypeTextfieldActionPerformed(evt);
             }
         });
 
@@ -143,33 +128,31 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cussaveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cusnameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                            .addComponent(cusCNICTextfield)
-                            .addComponent(cusemailTextfield)
-                            .addComponent(cuscontactnoTextfield)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(cusidTextfield)
+                            .addComponent(usernameTextfield)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(useridTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                                .addComponent(jButton4))
+                            .addComponent(usertypeTextfield)
+                            .addComponent(userpwdField)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(cussaveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton2)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,30 +160,26 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cusidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(useridTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cusnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cusCNICTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(cusemailTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(userpwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cuscontactnoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usertypeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cussaveButton)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(cussaveButton))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addComponent(jButton2))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -208,32 +187,30 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(268, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(285, 285, 285))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(232, 232, 232))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,38 +220,27 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cusidTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusidTextfieldActionPerformed
+    private void useridTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cusidTextfieldActionPerformed
+    }//GEN-LAST:event_useridTextfieldActionPerformed
 
-    private void cusnameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusnameTextfieldActionPerformed
+    private void usernameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cusnameTextfieldActionPerformed
+    }//GEN-LAST:event_usernameTextfieldActionPerformed
 
-    private void cusCNICTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusCNICTextfieldActionPerformed
+    private void usertypeTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertypeTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cusCNICTextfieldActionPerformed
-
-    private void cusemailTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusemailTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cusemailTextfieldActionPerformed
-
-    private void cuscontactnoTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuscontactnoTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cuscontactnoTextfieldActionPerformed
+    }//GEN-LAST:event_usertypeTextfieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String cusId = cusidTextfield.getText();
-
-        cusidTextfield.setText("");
-        cusnameTextfield.setText("");
-        cusCNICTextfield.setText("");
-        cusemailTextfield.setText("");
-        cuscontactnoTextfield.setText("");
+        String cusId = useridTextfield.getText();
+        useridTextfield.setText("");
+        usernameTextfield.setText("");
+        usertypeTextfield.setText("");
 
         SearchCustomerDAO searchCustomerDAO = new SearchCustomerDAO();
         SearchCustomerfacade searchCustomerfacade = new SearchCustomerfacade();
@@ -282,11 +248,9 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
             ResultSet resultSet = searchCustomerDAO.searchFromdb(cusId);
 
             if (searchCustomerfacade.checkAvailability(resultSet)) {
-                cusidTextfield.setText(resultSet.getString("id"));
-                cusnameTextfield.setText(resultSet.getString("name"));
-                cusCNICTextfield.setText(Integer.toString(resultSet.getInt("cnic")));
-                cusemailTextfield.setText(resultSet.getString("e_mail"));
-                cuscontactnoTextfield.setText(resultSet.getString("contact_no"));
+                useridTextfield.setText(resultSet.getString("id"));
+                usernameTextfield.setText(resultSet.getString("name"));
+                usertypeTextfield.setText(resultSet.getString("contact_no"));
             } else {
                 JOptionPane.showInternalMessageDialog(rootPane, "No Data Found");
             }
@@ -298,17 +262,16 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void cussaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cussaveButtonActionPerformed
-        String cusId = cusidTextfield.getText();
-        String cusName = cusnameTextfield.getText();
-        String cusNIC = cusCNICTextfield.getText();
-        String cusEmail = cusemailTextfield.getText();
-        String cusContactno = cuscontactnoTextfield.getText();
+        String userId = useridTextfield.getText();
+        String userName = usernameTextfield.getText();
+        String userpwd = userpwdField.getPassword().toString();
+        String userType = usertypeTextfield.getText();
 
-        UpdateCustomerDAO updateCustomerDAO = new UpdateCustomerDAO();
+        UpdateUserDAO updateuserDAO = new UpdateUserDAO();
 
         int result;
         try {
-            result = updateCustomerDAO.addTodb(cusId, cusName, cusNIC, cusEmail, cusContactno);
+            result = updateuserDAO.addTodb(userId, userName, userpwd, userType);
 
             UpdateCustomerfacade updateCustomer = new UpdateCustomerfacade();
             if (updateCustomer.checkUpdate(result)) {
@@ -325,11 +288,6 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cusCNICTextfield;
-    private javax.swing.JTextField cuscontactnoTextfield;
-    private javax.swing.JTextField cusemailTextfield;
-    private javax.swing.JTextField cusidTextfield;
-    private javax.swing.JTextField cusnameTextfield;
     private javax.swing.JButton cussaveButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -337,10 +295,13 @@ public class UpdateCustomer extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField useridTextfield;
+    private javax.swing.JTextField usernameTextfield;
+    private javax.swing.JPasswordField userpwdField;
+    private javax.swing.JTextField usertypeTextfield;
     // End of variables declaration//GEN-END:variables
 }

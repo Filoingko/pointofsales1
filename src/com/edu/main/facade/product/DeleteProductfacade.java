@@ -11,7 +11,7 @@ package com.edu.main.facade.product;
  */
 public class DeleteProductfacade {
 
-    public boolean checkUpdate(int result) {
+    public boolean checkDelete(int result) {
         if(0<result){
             return true;
         }else{

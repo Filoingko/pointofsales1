@@ -8,10 +8,12 @@ package com.edu.main.view.product;
 import com.edu.main.dao.product.SearchProductDAO;
 import com.edu.main.facade.product.SearchProductfacade;
 import com.edu.main.view.MainWindow;
+import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +27,7 @@ public class SearchProduct extends javax.swing.JInternalFrame {
      */
     public SearchProduct() {
         initComponents();
+        proedditButton.setEnabled(false);
     }
 
     /**
@@ -42,7 +45,6 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         proidTextfield = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        pronameTextfield = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         propriceTextfield = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -54,11 +56,12 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         proedditButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         prosearchButton = new javax.swing.JButton();
+        pronameTextfield = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
         setOpaque(true);
-        setPreferredSize(new java.awt.Dimension(883, 450));
+        setPreferredSize(new java.awt.Dimension(1021, 461));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -79,16 +82,11 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel3.setText("Name            : ");
 
-        pronameTextfield.setEnabled(false);
-        pronameTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pronameTextfieldActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel4.setText("Price              : ");
 
+        propriceTextfield.setEditable(false);
+        propriceTextfield.setBackground(new java.awt.Color(255, 255, 255));
         propriceTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 propriceTextfieldActionPerformed(evt);
@@ -98,6 +96,8 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel5.setText("Type             : ");
 
+        protypeTextfield.setEditable(false);
+        protypeTextfield.setBackground(new java.awt.Color(255, 255, 255));
         protypeTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 protypeTextfieldActionPerformed(evt);
@@ -107,6 +107,8 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel6.setText("Manufacture   : ");
 
+        promanufaTextfield.setEditable(false);
+        promanufaTextfield.setBackground(new java.awt.Color(255, 255, 255));
         promanufaTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 promanufaTextfieldActionPerformed(evt);
@@ -116,6 +118,8 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel7.setText("Quantity        : ");
 
+        proquantityTextfield.setEditable(false);
+        proquantityTextfield.setBackground(new java.awt.Color(255, 255, 255));
         proquantityTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 proquantityTextfieldActionPerformed(evt);
@@ -138,38 +142,46 @@ public class SearchProduct extends javax.swing.JInternalFrame {
             }
         });
 
+        pronameTextfield.setEditable(false);
+        pronameTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        pronameTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pronameTextfieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(proedditButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addComponent(proedditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(proquantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(propriceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pronameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                            .addComponent(propriceTextfield)
-                            .addComponent(protypeTextfield)
-                            .addComponent(promanufaTextfield)
-                            .addComponent(proquantityTextfield)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(proidTextfield)
+                                .addComponent(proidTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(prosearchButton)))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                                .addComponent(prosearchButton))
+                            .addComponent(pronameTextfield))
+                        .addComponent(protypeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(promanufaTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,31 +191,31 @@ public class SearchProduct extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(proidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(prosearchButton))
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(pronameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(propriceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(protypeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(promanufaTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(proquantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(proedditButton))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addComponent(proedditButton)
+                    .addComponent(jButton2))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -211,13 +223,13 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(jLabel1)
                 .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +238,7 @@ public class SearchProduct extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,7 +248,7 @@ public class SearchProduct extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,10 +261,6 @@ public class SearchProduct extends javax.swing.JInternalFrame {
     private void proidTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proidTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_proidTextfieldActionPerformed
-
-    private void pronameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pronameTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pronameTextfieldActionPerformed
 
     private void propriceTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propriceTextfieldActionPerformed
         // TODO add your handling code here:
@@ -278,8 +286,19 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         String proManufa = promanufaTextfield.getText();
         String proQty = proquantityTextfield.getText();
 
-        MainWindow mainWindow = new MainWindow();
-        mainWindow.updateProductedditButton();
+        
+        UpdateProduct updateProduct = new UpdateProduct();
+        JDesktopPane mainWindow = getDesktopPane();
+        
+        Dimension desktopSize = mainWindow.getSize();
+        Dimension InternalFrameSize = updateProduct.getSize();
+        updateProduct.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
+        mainWindow.add(updateProduct);
+        updateProduct.setVisible(true);
+        updateProduct.updatesearchbuttonactionperformed(proId);
+        this.dispose();
     }//GEN-LAST:event_proedditButtonActionPerformed
 
     private void prosearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosearchButtonActionPerformed
@@ -306,7 +325,8 @@ public class SearchProduct extends javax.swing.JInternalFrame {
                 proquantityTextfield.setText(Double.toString(resultSet.getDouble("quantity")));
                 proedditButton.setEnabled(true);
             } else {
-                JOptionPane.showInternalMessageDialog(rootPane, "No Data Found");
+                JOptionPane.showMessageDialog(null,
+                        "<html><div color=red>No Data Found!", "Message", JOptionPane.ERROR_MESSAGE);
                 proedditButton.setEnabled(false);
             }
         } catch (ClassNotFoundException ex) {
@@ -316,6 +336,10 @@ public class SearchProduct extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_prosearchButtonActionPerformed
+
+    private void pronameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pronameTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pronameTextfieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

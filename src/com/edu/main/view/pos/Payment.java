@@ -40,7 +40,7 @@ public class Payment extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(880, 450));
+        setPreferredSize(new java.awt.Dimension(1021, 461));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Usuzi", 0, 36)); // NOI18N

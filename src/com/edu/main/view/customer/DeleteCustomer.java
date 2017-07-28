@@ -60,7 +60,7 @@ public class DeleteCustomer extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setAlignmentX(1.0F);
         setOpaque(true);
-        setPreferredSize(new java.awt.Dimension(883, 450));
+        setPreferredSize(new java.awt.Dimension(1021, 461));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

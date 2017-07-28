@@ -17,6 +17,8 @@ import com.edu.main.view.product.DeleteProduct;
 import com.edu.main.view.product.SearchProduct;
 import com.edu.main.view.product.AddNewProduct;
 import com.edu.main.view.product.ProductReport;
+import com.edu.main.viwe.user.AddNewUser;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
@@ -74,16 +76,15 @@ public class MainWindow extends javax.swing.JFrame {
         customerreportButton = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
+        newproductfileMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        newcustomerMenuItem = new javax.swing.JMenuItem();
+        newuserMenuItem = new javax.swing.JMenuItem();
+        purcheMenuItem = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        updateuserMenuItem = new javax.swing.JMenuItem();
+        removeuserMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -370,7 +371,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 710));
 
-        fileMenu.setText("File");
+        newproductfileMenu.setText("File");
+        newproductfileMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newproductfileMenuActionPerformed(evt);
+            }
+        });
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("New Product");
@@ -379,19 +385,31 @@ public class MainWindow extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem1);
+        newproductfileMenu.add(jMenuItem1);
 
-        jMenuItem2.setText("New Customer");
-        fileMenu.add(jMenuItem2);
+        newcustomerMenuItem.setText("New Customer");
+        newcustomerMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newcustomerMenuItemActionPerformed(evt);
+            }
+        });
+        newproductfileMenu.add(newcustomerMenuItem);
 
-        jMenuItem3.setText("New User");
-        fileMenu.add(jMenuItem3);
+        newuserMenuItem.setText("New User");
+        newuserMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newuserMenuItemActionPerformed(evt);
+            }
+        });
+        newproductfileMenu.add(newuserMenuItem);
 
-        jMenuItem4.setText("Purche Product");
-        fileMenu.add(jMenuItem4);
-
-        jMenuItem5.setText("Payment");
-        fileMenu.add(jMenuItem5);
+        purcheMenuItem.setText("Purche Product");
+        purcheMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                purcheMenuItemActionPerformed(evt);
+            }
+        });
+        newproductfileMenu.add(purcheMenuItem);
 
         jMenuItem6.setText("Print");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -399,17 +417,17 @@ public class MainWindow extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem6);
+        newproductfileMenu.add(jMenuItem6);
 
-        jMenuBar1.add(fileMenu);
+        jMenuBar1.add(newproductfileMenu);
 
         editMenu.setText("Edit");
 
-        jMenuItem7.setText("Update User");
-        editMenu.add(jMenuItem7);
+        updateuserMenuItem.setText("Update User");
+        editMenu.add(updateuserMenuItem);
 
-        jMenuItem8.setText("Remove User");
-        editMenu.add(jMenuItem8);
+        removeuserMenuItem.setText("Remove User");
+        editMenu.add(removeuserMenuItem);
         editMenu.add(jSeparator1);
 
         jMenuItem9.setText("Update Product");
@@ -498,7 +516,16 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        displayDesktopPane.removeAll();
+        AddNewProduct obj = new AddNewProduct();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
+        displayDesktopPane.add(obj);
+        obj.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -511,71 +538,131 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void addproductbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addproductbuttonMouseClicked
         displayDesktopPane.removeAll();
-        AddNewProduct obj=new AddNewProduct();
+        AddNewProduct obj = new AddNewProduct();
+
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_addproductbuttonMouseClicked
 
     private void searchproductButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchproductButtonMouseClicked
         displayDesktopPane.removeAll();
-        SearchProduct obj=new SearchProduct();
+        SearchProduct obj = new SearchProduct();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_searchproductButtonMouseClicked
 
     private void updateproductButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateproductButtonMouseClicked
         displayDesktopPane.removeAll();
-        UpdateProduct obj=new UpdateProduct();
+        UpdateProduct obj = new UpdateProduct();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_updateproductButtonMouseClicked
 
-    public void updateProductedditButton(){
+    public void updateProductedditButton() {
         System.out.println("oooooo");
         displayDesktopPane.removeAll();
-        UpdateProduct obj=new UpdateProduct();
+        UpdateProduct obj = new UpdateProduct();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }
-    
+
     private void deleteproductButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteproductButtonMouseClicked
         displayDesktopPane.removeAll();
-        DeleteProduct obj=new DeleteProduct();
+        DeleteProduct obj = new DeleteProduct();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_deleteproductButtonMouseClicked
 
     private void productreportButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productreportButtonMouseClicked
         displayDesktopPane.removeAll();
-        ProductReport obj=new ProductReport();
+        ProductReport obj = new ProductReport();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_productreportButtonMouseClicked
 
     private void addcustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addcustomerButtonMouseClicked
         displayDesktopPane.removeAll();
-        AddNewCustomer obj=new AddNewCustomer();
+        AddNewCustomer obj = new AddNewCustomer();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_addcustomerButtonMouseClicked
 
     private void searchcustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchcustomerButtonMouseClicked
         displayDesktopPane.removeAll();
-        SearchCustomer obj=new SearchCustomer();
+        SearchCustomer obj = new SearchCustomer();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_searchcustomerButtonMouseClicked
 
     private void updatecustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatecustomerButtonMouseClicked
         displayDesktopPane.removeAll();
-        UpdateCustomer obj=new UpdateCustomer();
+        UpdateCustomer obj = new UpdateCustomer();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_updatecustomerButtonMouseClicked
 
     private void deletecustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deletecustomerButtonMouseClicked
         displayDesktopPane.removeAll();
-        DeleteCustomer obj=new DeleteCustomer();
+        DeleteCustomer obj = new DeleteCustomer();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_deletecustomerButtonMouseClicked
@@ -583,24 +670,85 @@ public class MainWindow extends javax.swing.JFrame {
     private void customerreportButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerreportButtonMouseClicked
         // TODO add your handling code here:
         displayDesktopPane.removeAll();
-        CustomerReport obj=new CustomerReport();
+        CustomerReport obj = new CustomerReport();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_customerreportButtonMouseClicked
 
     private void posButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posButtonMouseClicked
         displayDesktopPane.removeAll();
-        Purchase obj=new Purchase();
+        Purchase obj = new Purchase();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_posButtonMouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         displayDesktopPane.removeAll();
-        Payment obj=new Payment();
+        Payment obj = new Payment();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void newproductfileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newproductfileMenuActionPerformed
+        displayDesktopPane.removeAll();
+        AddNewCustomer obj = new AddNewCustomer();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
+        displayDesktopPane.add(obj);
+        obj.setVisible(true);
+    }//GEN-LAST:event_newproductfileMenuActionPerformed
+
+    private void purcheMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purcheMenuItemActionPerformed
+        displayDesktopPane.removeAll();
+        Purchase obj = new Purchase();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
+        displayDesktopPane.add(obj);
+        obj.setVisible(true);
+    }//GEN-LAST:event_purcheMenuItemActionPerformed
+
+    private void newcustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newcustomerMenuItemActionPerformed
+        
+    }//GEN-LAST:event_newcustomerMenuItemActionPerformed
+
+    private void newuserMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newuserMenuItemActionPerformed
+        displayDesktopPane.removeAll();
+        AddNewUser obj = new AddNewUser();
+        
+        Dimension desktopSize = displayDesktopPane.getSize();
+        Dimension InternalFrameSize = obj.getSize();
+        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
+                (desktopSize.height - InternalFrameSize.height) / 2);
+        
+        displayDesktopPane.add(obj);
+        obj.setVisible(true);
+    }//GEN-LAST:event_newuserMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -651,7 +799,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel deleteproductButton;
     private javax.swing.JDesktopPane displayDesktopPane;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -681,18 +828,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -700,14 +841,20 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenuItem newcustomerMenuItem;
+    private javax.swing.JMenu newproductfileMenu;
+    private javax.swing.JMenuItem newuserMenuItem;
     private javax.swing.JLabel posButton;
     private javax.swing.JPanel productPanel;
     private javax.swing.JLabel productreportButton;
+    private javax.swing.JMenuItem purcheMenuItem;
+    private javax.swing.JMenuItem removeuserMenuItem;
     private javax.swing.JMenu repoartMenu;
     private javax.swing.JLabel searchcustomerButton;
     private javax.swing.JLabel searchproductButton;
     private javax.swing.JLabel updatecustomerButton;
     private javax.swing.JLabel updateproductButton;
+    private javax.swing.JMenuItem updateuserMenuItem;
     private javax.swing.JMenu viewMenu;
     // End of variables declaration//GEN-END:variables
 }

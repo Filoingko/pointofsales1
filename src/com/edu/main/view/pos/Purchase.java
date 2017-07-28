@@ -75,6 +75,7 @@ public class Purchase extends javax.swing.JInternalFrame {
         cusidLable = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        setPreferredSize(new java.awt.Dimension(1021, 461));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

@@ -3,39 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.edu.main.dao.product;
+package com.edu.main.dao.user;
 
 import com.edu.main.dbconnect.DBConnector;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.stream.DoubleStream;
 
 /**
  *
  * @author Gihan Chathuranga
  */
-public class AddNewProductDAO {
-    public static Connection dbconnect() throws ClassNotFoundException, SQLException {
+public class SearchUserDAO {
+        public static Connection dbconnect() throws ClassNotFoundException, SQLException {
         DBConnector dbConnector = new DBConnector();
         Connection connection = dbConnector.connection();
         return connection;
     }
-
-    public int addTodb(String proId, String proName, String proPrice, String proType, String proManufa, String proQty) throws ClassNotFoundException, SQLException {
-        
-        double proPrice1 = Double.parseDouble(proPrice);
-        double proQty1 = Double.parseDouble(proQty);
+    
+    public ResultSet searchFromdb(String cusId) throws ClassNotFoundException, SQLException {
         
         Connection connection = dbconnect();
         
-        String sql="insert into products values('00','"+proId+"','"+proName+"','"+proPrice1+"','"+proType+"','"+proManufa+"','"+proQty1+"')";
+        String sql="select * from user where id = '"+cusId+"'";
         
         Class.forName("com.mysql.jdbc.Driver");
         Statement stm=connection.createStatement();
-	int result = stm.executeUpdate(sql);
+	ResultSet result = stm.executeQuery(sql);
         
         return result;
     }
-    
 }
