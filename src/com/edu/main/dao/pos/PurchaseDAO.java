@@ -120,10 +120,19 @@ public class PurchaseDAO {
 
             result = pstm.executeUpdate();
         }
+
         return result;
     }
 
-    public void clearCart() {
-       
+    public int clearCart() throws ClassNotFoundException, SQLException {
+
+        Connection connection = dbconnect();
+        String sql = "TRUNCATE tempurches";
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Statement stm = connection.createStatement();
+        int result = stm.executeUpdate(sql);
+
+        return result;
     }
 }

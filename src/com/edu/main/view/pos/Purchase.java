@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class Purchase extends javax.swing.JInternalFrame {
 
     public ArrayList<PurchaseE> tempList = new ArrayList<>();
-    String cusId;
+    String cusId = "Guest Customer";
 
     /**
      * Creates new form Purchase
@@ -293,7 +293,7 @@ public class Purchase extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void customerIDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIDButtonActionPerformed
-        addtocartButton.enable(false);
+        addtocartButton.setEnabled(false);
         customerPanel.setVisible(true);
         productdetailPanel.setVisible(false);
         customerPanel2.setVisible(false);
@@ -313,13 +313,17 @@ public class Purchase extends javax.swing.JInternalFrame {
             String proQty = proquantityTextfield.getText();
 
             PurchaseDAO purchaseDAO = new PurchaseDAO();
-            int result = purchaseDAO.addToDB(proId, proName, proPrice, proType, proQty);
+            if (!proquantityTextfield.equals(" ")) {
+                int result = purchaseDAO.addToDB(proId, proName, proPrice, proType, proQty);
 
-            Purchasefacade purchasefacade = new Purchasefacade();
-            if (purchasefacade.checkAdd(result)) {
-                updatecart();
-            } else {
-                JOptionPane.showInternalMessageDialog(rootPane, "Error");
+                Purchasefacade purchasefacade = new Purchasefacade();
+                if (purchasefacade.checkAdd(result)) {
+                    updatecart();
+                } else {
+                    JOptionPane.showInternalMessageDialog(rootPane, "Error");
+                }
+            }else{
+                JOptionPane.showInternalMessageDialog(rootPane, "Enter quantity");
             }
 
         } catch (ClassNotFoundException ex) {
@@ -364,10 +368,12 @@ public class Purchase extends javax.swing.JInternalFrame {
                 protypeTextfield.setText(resultSet.getString("type"));
                 //promanufaTextfield.setText(resultSet.getString("manufacture"));
 
+                addtocartButton.setEnabled(true);
+
             } else {
                 JOptionPane.showInternalMessageDialog(rootPane, "No Product Found");
-
             }
+
         } catch (SQLException ex) {
             Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -394,17 +400,23 @@ public class Purchase extends javax.swing.JInternalFrame {
             PurchaseDAO purchaseDAO = new PurchaseDAO();
             Purchasefacade searchCustomerfacade = new Purchasefacade();
 
-            ResultSet resultSet = purchaseDAO.searchFromdb(cusId);
-
-            if (searchCustomerfacade.checkAvailability(resultSet)) {
-                addtocartButton.enable(false);
-                customerPanel.setVisible(false);
-                customerPanel2.setVisible(true);
-                productdetailPanel.setVisible(true);
-                cusnameLable.setText(resultSet.getString("name"));
+            if (!cusId.equals("")) {
+                ResultSet resultSet = purchaseDAO.searchFromdb(cusId);
+                if (searchCustomerfacade.checkAvailability(resultSet)) {
+                    addtocartButton.setEnabled(false);
+                    customerPanel.setVisible(false);
+                    customerPanel2.setVisible(true);
+                    productdetailPanel.setVisible(true);
+                    cusnameLable.setText(resultSet.getString("name"));
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "<html><div color=red>No Customer Found!", "Message", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                JOptionPane.showInternalMessageDialog(rootPane, "No Customer Found");
+                JOptionPane.showMessageDialog(null,
+                        "<html><div color=red>Enter Customer ID", "Message", JOptionPane.ERROR_MESSAGE);
             }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -414,14 +426,15 @@ public class Purchase extends javax.swing.JInternalFrame {
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
         try {
-            PurchaseDAO purchaseDAO = new PurchaseDAO(); 
+            PurchaseDAO purchaseDAO = new PurchaseDAO();
             int result = purchaseDAO.payBill(cusId);
-            
+
             Purchasefacade purchasefacade = new Purchasefacade();
-            if(purchasefacade.checkAdd(result)){
-                purchaseDAO.clearCart(); 
-            }else{
-               JOptionPane.showInternalMessageDialog(rootPane, "Error"); 
+            if (purchasefacade.checkAdd(result)) {
+                purchaseDAO.clearCart();
+                updatecart();
+            } else {
+                JOptionPane.showInternalMessageDialog(rootPane, "Error");
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
