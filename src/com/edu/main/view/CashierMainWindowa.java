@@ -28,25 +28,13 @@ import javax.swing.JFrame;
  *
  * @author Gihan Chathuranga
  */
-public class MainWindowa extends javax.swing.JFrame {
+public class CashierMainWindowa extends javax.swing.JFrame {
 
     /**
      * Creates new form MainWindow
      */
-    public MainWindowa() {
+    public CashierMainWindowa() {
         initComponents();
-        
-        displayDesktopPane.removeAll();
-        Purchase obj = new Purchase();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-        
 
     }
 
@@ -67,7 +55,6 @@ public class MainWindowa extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         productPanel = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         customerPanel = new javax.swing.JPanel();
@@ -75,7 +62,6 @@ public class MainWindowa extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         backPanel = new javax.swing.JPanel();
         posPanels = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
@@ -84,37 +70,16 @@ public class MainWindowa extends javax.swing.JFrame {
         mainreportButton = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
-        userPanels = new javax.swing.JPanel();
-        jPanel28 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel29 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel30 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         customerPanels = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        addcustomerButton = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         searchcustomerButton = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        updatecustomerButton = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
-        deletecustomerButton = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         customerreportButton = new javax.swing.JLabel();
         productPanels = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        addproductbutton = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         searchproductButton = new javax.swing.JLabel();
-        jPanel24 = new javax.swing.JPanel();
-        updateproductButton = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         productreportButton = new javax.swing.JLabel();
-        jPanel26 = new javax.swing.JPanel();
-        deleteproductButton = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         newproductfileMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -197,17 +162,6 @@ public class MainWindowa extends javax.swing.JFrame {
 
         productPanel.setBackground(new java.awt.Color(102, 111, 140));
         productPanel.setLayout(null);
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel8.setText("                                    Users");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
-        productPanel.add(jLabel8);
-        jLabel8.setBounds(10, 10, 300, 30);
 
         jPanel6.setBackground(new java.awt.Color(102, 111, 140));
         jPanel6.setPreferredSize(new java.awt.Dimension(164, 105));
@@ -312,30 +266,15 @@ public class MainWindowa extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(0, 13, 46));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Log Out");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 80, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(382, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 80, 480));
@@ -455,177 +394,7 @@ public class MainWindowa extends javax.swing.JFrame {
 
         backPanel.add(posPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 480));
 
-        userPanels.setBackground(new java.awt.Color(22, 38, 80));
-
-        jPanel28.setBackground(new java.awt.Color(102, 111, 140));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/uppro.png"))); // NOI18N
-        jLabel2.setText(" Update User");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
-        jPanel28.setLayout(jPanel28Layout);
-        jPanel28Layout.setHorizontalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel28Layout.setVerticalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel15.setBackground(new java.awt.Color(102, 111, 140));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/00addcus.png"))); // NOI18N
-        jLabel1.setText("  Add New User");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel29.setBackground(new java.awt.Color(102, 111, 140));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/00cusdel.png"))); // NOI18N
-        jLabel3.setText("  Delete User");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
-        jPanel29.setLayout(jPanel29Layout);
-        jPanel29Layout.setHorizontalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel29Layout.setVerticalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel30.setBackground(new java.awt.Color(102, 111, 140));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/prore.png"))); // NOI18N
-        jLabel4.setText("  User Report");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
-        jPanel30.setLayout(jPanel30Layout);
-        jPanel30Layout.setHorizontalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel30Layout.setVerticalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout userPanelsLayout = new javax.swing.GroupLayout(userPanels);
-        userPanels.setLayout(userPanelsLayout);
-        userPanelsLayout.setHorizontalGroup(
-            userPanelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        userPanelsLayout.setVerticalGroup(
-            userPanelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userPanelsLayout.createSequentialGroup()
-                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        backPanel.add(userPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 480));
-
         customerPanels.setBackground(new java.awt.Color(22, 38, 80));
-
-        jPanel11.setBackground(new java.awt.Color(102, 111, 140));
-
-        addcustomerButton.setBackground(new java.awt.Color(153, 153, 255));
-        addcustomerButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        addcustomerButton.setForeground(new java.awt.Color(153, 153, 255));
-        addcustomerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/00addcus.png"))); // NOI18N
-        addcustomerButton.setText("Add New Customer");
-        addcustomerButton.setMinimumSize(new java.awt.Dimension(0, 0));
-        addcustomerButton.setPreferredSize(new java.awt.Dimension(60, 45));
-        addcustomerButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addcustomerButtonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(addcustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addcustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-        );
 
         jPanel12.setBackground(new java.awt.Color(102, 111, 140));
 
@@ -647,71 +416,15 @@ public class MainWindowa extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchcustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchcustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchcustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel13.setBackground(new java.awt.Color(102, 111, 140));
-
-        updatecustomerButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        updatecustomerButton.setForeground(new java.awt.Color(153, 153, 255));
-        updatecustomerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/00updcu.png"))); // NOI18N
-        updatecustomerButton.setText("  Update Customer");
-        updatecustomerButton.setMinimumSize(new java.awt.Dimension(0, 0));
-        updatecustomerButton.setPreferredSize(new java.awt.Dimension(60, 45));
-        updatecustomerButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updatecustomerButtonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(updatecustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(updatecustomerButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-        );
-
-        jPanel14.setBackground(new java.awt.Color(102, 111, 140));
-
-        deletecustomerButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        deletecustomerButton.setForeground(new java.awt.Color(153, 153, 255));
-        deletecustomerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/00cusdel.png"))); // NOI18N
-        deletecustomerButton.setText("  Delete Customer");
-        deletecustomerButton.setMinimumSize(new java.awt.Dimension(0, 0));
-        deletecustomerButton.setPreferredSize(new java.awt.Dimension(60, 45));
-        deletecustomerButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deletecustomerButtonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(deletecustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(deletecustomerButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
 
         jPanel27.setBackground(new java.awt.Color(102, 111, 140));
@@ -746,57 +459,21 @@ public class MainWindowa extends javax.swing.JFrame {
         customerPanels.setLayout(customerPanelsLayout);
         customerPanelsLayout.setHorizontalGroup(
             customerPanelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         customerPanelsLayout.setVerticalGroup(
             customerPanelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerPanelsLayout.createSequentialGroup()
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(294, Short.MAX_VALUE))
         );
 
         backPanel.add(customerPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 480));
 
         productPanels.setBackground(new java.awt.Color(22, 38, 80));
-
-        jPanel7.setBackground(new java.awt.Color(102, 111, 140));
-
-        addproductbutton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        addproductbutton.setForeground(new java.awt.Color(204, 204, 255));
-        addproductbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/addprod.png"))); // NOI18N
-        addproductbutton.setText("  Add New Product");
-        addproductbutton.setMinimumSize(new java.awt.Dimension(0, 0));
-        addproductbutton.setPreferredSize(new java.awt.Dimension(60, 45));
-        addproductbutton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addproductbuttonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(addproductbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addproductbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-        );
 
         jPanel23.setBackground(new java.awt.Color(102, 111, 140));
 
@@ -818,40 +495,12 @@ public class MainWindowa extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchproductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchproductButton, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(searchproductButton, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-        );
-
-        jPanel24.setBackground(new java.awt.Color(102, 111, 140));
-
-        updateproductButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        updateproductButton.setForeground(new java.awt.Color(204, 204, 255));
-        updateproductButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/uppro.png"))); // NOI18N
-        updateproductButton.setText("   Update Product");
-        updateproductButton.setMinimumSize(new java.awt.Dimension(0, 0));
-        updateproductButton.setPreferredSize(new java.awt.Dimension(60, 45));
-        updateproductButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateproductButtonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(updateproductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(updateproductButton, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
         );
 
         jPanel25.setBackground(new java.awt.Color(102, 111, 140));
@@ -885,56 +534,20 @@ public class MainWindowa extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel26.setBackground(new java.awt.Color(102, 111, 140));
-
-        deleteproductButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        deleteproductButton.setForeground(new java.awt.Color(204, 204, 255));
-        deleteproductButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/images/delpro.png"))); // NOI18N
-        deleteproductButton.setText("   Delete Product");
-        deleteproductButton.setMinimumSize(new java.awt.Dimension(0, 0));
-        deleteproductButton.setPreferredSize(new java.awt.Dimension(60, 45));
-        deleteproductButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteproductButtonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
-        jPanel26.setLayout(jPanel26Layout);
-        jPanel26Layout.setHorizontalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(deleteproductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel26Layout.setVerticalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(deleteproductButton, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout productPanelsLayout = new javax.swing.GroupLayout(productPanels);
         productPanels.setLayout(productPanelsLayout);
         productPanelsLayout.setHorizontalGroup(
             productPanelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         productPanelsLayout.setVerticalGroup(
             productPanelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(productPanelsLayout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         backPanel.add(productPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 480));
@@ -1108,19 +721,6 @@ public class MainWindowa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
-    private void addproductbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addproductbuttonMouseClicked
-        displayDesktopPane.removeAll();
-        AddNewProduct obj = new AddNewProduct();
-
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_addproductbuttonMouseClicked
-
     private void searchproductButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchproductButtonMouseClicked
         displayDesktopPane.removeAll();
         SearchProduct obj = new SearchProduct();
@@ -1133,19 +733,6 @@ public class MainWindowa extends javax.swing.JFrame {
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_searchproductButtonMouseClicked
-
-    private void updateproductButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateproductButtonMouseClicked
-        displayDesktopPane.removeAll();
-        UpdateProduct obj = new UpdateProduct();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_updateproductButtonMouseClicked
 
     public void updateProductedditButton() {
         System.out.println("oooooo");
@@ -1161,19 +748,6 @@ public class MainWindowa extends javax.swing.JFrame {
         obj.setVisible(true);
     }
 
-    private void deleteproductButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteproductButtonMouseClicked
-        displayDesktopPane.removeAll();
-        DeleteProduct obj = new DeleteProduct();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_deleteproductButtonMouseClicked
-
     private void productreportButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productreportButtonMouseClicked
         displayDesktopPane.removeAll();
         ProductReport obj = new ProductReport();
@@ -1187,19 +761,6 @@ public class MainWindowa extends javax.swing.JFrame {
         obj.setVisible(true);
     }//GEN-LAST:event_productreportButtonMouseClicked
 
-    private void addcustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addcustomerButtonMouseClicked
-        displayDesktopPane.removeAll();
-        AddNewCustomer obj = new AddNewCustomer();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_addcustomerButtonMouseClicked
-
     private void searchcustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchcustomerButtonMouseClicked
         displayDesktopPane.removeAll();
         SearchCustomer obj = new SearchCustomer();
@@ -1212,32 +773,6 @@ public class MainWindowa extends javax.swing.JFrame {
         displayDesktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_searchcustomerButtonMouseClicked
-
-    private void updatecustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatecustomerButtonMouseClicked
-        displayDesktopPane.removeAll();
-        UpdateCustomer obj = new UpdateCustomer();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_updatecustomerButtonMouseClicked
-
-    private void deletecustomerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deletecustomerButtonMouseClicked
-        displayDesktopPane.removeAll();
-        DeleteCustomer obj = new DeleteCustomer();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_deletecustomerButtonMouseClicked
 
     private void customerreportButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerreportButtonMouseClicked
         // TODO add your handling code here:
@@ -1322,91 +857,26 @@ public class MainWindowa extends javax.swing.JFrame {
         obj.setVisible(true);
     }//GEN-LAST:event_mainreportButtonMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        displayDesktopPane.removeAll();
-        AddNewUser obj = new AddNewUser();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        displayDesktopPane.removeAll();
-        UpdateUser obj = new UpdateUser();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        displayDesktopPane.removeAll();
-        DeleteUser obj = new DeleteUser();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        displayDesktopPane.removeAll();
-        UserList obj = new UserList();
-        
-        Dimension desktopSize = displayDesktopPane.getSize();
-        Dimension InternalFrameSize = obj.getSize();
-        obj.setLocation((desktopSize.width - InternalFrameSize.width) / 2,
-                (desktopSize.height - InternalFrameSize.height) / 2);
-        
-        displayDesktopPane.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_jLabel4MouseClicked
-
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         posPanels.setVisible(true);
         productPanels.setVisible(false);
         customerPanels.setVisible(false);
-        userPanels.setVisible(false);
+        //userPanels.setVisible(false);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         posPanels.setVisible(false);
         productPanels.setVisible(true);
         customerPanels.setVisible(false);
-        userPanels.setVisible(false);
+        //userPanels.setVisible(false);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         posPanels.setVisible(false);
         productPanels.setVisible(false);
         customerPanels.setVisible(true);
-        userPanels.setVisible(false);
+        //userPanels.setVisible(false);
     }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        posPanels.setVisible(false);
-        productPanels.setVisible(false);
-        customerPanels.setVisible(false);
-        userPanels.setVisible(true);
-    }//GEN-LAST:event_jLabel8MouseClicked
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        Login login = new Login();
-        login.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1425,14 +895,16 @@ public class MainWindowa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CashierMainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CashierMainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CashierMainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CashierMainWindowa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -1442,7 +914,7 @@ public class MainWindowa extends javax.swing.JFrame {
 //                MainWindow mainWindow = new MainWindow();
 //                mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //                mainWindow.setVisible(true);
-                new MainWindowa().setVisible(true);
+                new CashierMainWindowa().setVisible(true);
 
             }
         });
@@ -1450,28 +922,18 @@ public class MainWindowa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel addcustomerButton;
-    private javax.swing.JLabel addproductbutton;
     private javax.swing.JPanel backPanel;
     private javax.swing.JPanel customerPanel;
     private javax.swing.JPanel customerPanels;
     private javax.swing.JLabel customerreportButton;
-    private javax.swing.JLabel deletecustomerButton;
-    private javax.swing.JLabel deleteproductButton;
     private javax.swing.JDesktopPane displayDesktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -1496,29 +958,19 @@ public class MainWindowa extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel mainreportButton;
@@ -1535,10 +987,7 @@ public class MainWindowa extends javax.swing.JFrame {
     private javax.swing.JMenu repoartMenu;
     private javax.swing.JLabel searchcustomerButton;
     private javax.swing.JLabel searchproductButton;
-    private javax.swing.JLabel updatecustomerButton;
-    private javax.swing.JLabel updateproductButton;
     private javax.swing.JMenuItem updateuserMenuItem;
-    private javax.swing.JPanel userPanels;
     private javax.swing.JMenu viewMenu;
     // End of variables declaration//GEN-END:variables
 }

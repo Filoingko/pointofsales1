@@ -61,14 +61,17 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
         setOpaque(true);
         setPreferredSize(new java.awt.Dimension(1021, 461));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Usuzi", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setFont(new java.awt.Font("Usuzi", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add New Product");
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+
         jLabel2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID                : ");
 
         proidTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +81,7 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name            : ");
 
         pronameTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +91,7 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Price              : ");
 
         propriceTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -101,6 +106,7 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Type             : ");
 
         protypeTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +116,7 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Manufacture   : ");
 
         promanufaTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +126,7 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Quantity        : ");
 
         proquantityTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +156,7 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
             }
         });
 
-        errormassageText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        errormassageText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         errormassageText.setForeground(new java.awt.Color(204, 0, 0));
         errormassageText.setText("Enter All Fields");
 
@@ -228,14 +236,13 @@ public class AddNewProduct extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(258, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(223, 223, 223))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(274, 274, 274))))
+                .addGap(228, 228, 228)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(253, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(245, 245, 245))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

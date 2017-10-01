@@ -8,6 +8,7 @@ package com.edu.main.viwe.user;
 import com.edu.main.dao.customer.AddNewCustomerDAO;
 import com.edu.main.dao.customer.SearchCustomerDAO;
 import com.edu.main.dao.customer.UpdateCustomerDAO;
+import com.edu.main.dao.user.DeleteUserDAO;
 import com.edu.main.dao.user.UpdateUserDAO;
 import com.edu.main.facade.customer.AddNewCustomerfacade;
 import com.edu.main.facade.customer.SearchCustomerfacade;
@@ -68,7 +69,7 @@ public class DeleteUser extends javax.swing.JInternalFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Usuzi", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("update user informatation");
+        jLabel1.setText("Delete user");
 
         jLabel2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel2.setText("ID                : ");
@@ -109,7 +110,7 @@ public class DeleteUser extends javax.swing.JInternalFrame {
 
         jButton2.setText("Cancle");
 
-        cussaveButton.setText("Save");
+        cussaveButton.setText("Delete");
         cussaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cussaveButtonActionPerformed(evt);
@@ -187,21 +188,21 @@ public class DeleteUser extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(268, Short.MAX_VALUE)
+                .addContainerGap(295, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(285, 285, 285))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(232, 232, 232))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(363, 363, 363))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -233,7 +234,9 @@ public class DeleteUser extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_usertypeTextfieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        useridTextfield.setText("");
+        usernameTextfield.setText("");
+        usertypeTextfield.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -267,17 +270,20 @@ public class DeleteUser extends javax.swing.JInternalFrame {
         String userpwd = userpwdField.getPassword().toString();
         String userType = usertypeTextfield.getText();
 
-        UpdateUserDAO updateuserDAO = new UpdateUserDAO();
+        DeleteUserDAO updateuserDAO = new DeleteUserDAO();
 
         int result;
         try {
-            result = updateuserDAO.addTodb(userId, userName, userpwd, userType);
+            result = updateuserDAO.deleteFromdb(userId);
 
             UpdateCustomerfacade updateCustomer = new UpdateCustomerfacade();
             if (updateCustomer.checkUpdate(result)) {
-                System.out.println("Sucess");
+                JOptionPane.showInternalMessageDialog(this, "Delete Sucess");
+                useridTextfield.setText("");
+                usernameTextfield.setText("");
+                usertypeTextfield.setText("");
             } else {
-                System.out.println("Faield");
+                JOptionPane.showInternalMessageDialog(this, "Delete Failed");
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AddNewCustomer.class.getName()).log(Level.SEVERE, null, ex);

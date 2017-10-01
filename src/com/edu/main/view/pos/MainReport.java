@@ -54,14 +54,15 @@ public class MainReport extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(1021, 461));
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
         jPanel1.setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Usuzi", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("payment");
+        jLabel1.setFont(new java.awt.Font("Usuzi", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Purchase Report");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(331, 26, 195, 31);
+        jLabel1.setBounds(310, 20, 300, 40);
 
         reportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,8 +77,8 @@ public class MainReport extends javax.swing.JInternalFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(29, 86, 720, 320);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Search By Product"));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search By Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         searchbyproductButton.setText("Search");
         searchbyproductButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,8 +111,8 @@ public class MainReport extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(770, 80, 210, 100);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Search By Date"));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search By Date", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jButton3.setText("Search");
 
@@ -138,8 +139,8 @@ public class MainReport extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel5);
         jPanel5.setBounds(770, 300, 210, 100);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Search By Customer"));
+        jPanel4.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search By Customer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         searchbycustomerButton.setText("Search");
         searchbycustomerButton.addActionListener(new java.awt.event.ActionListener() {

@@ -8,6 +8,7 @@ package com.edu.main.viwe.user;
 import com.edu.main.dao.customer.AddNewCustomerDAO;
 import com.edu.main.dao.customer.SearchCustomerDAO;
 import com.edu.main.dao.customer.UpdateCustomerDAO;
+import com.edu.main.dao.user.SearchUserDAO;
 import com.edu.main.dao.user.UpdateUserDAO;
 import com.edu.main.facade.customer.AddNewCustomerfacade;
 import com.edu.main.facade.customer.SearchCustomerfacade;
@@ -55,7 +56,7 @@ public class UpdateUser extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cussaveButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        userSearchButton = new javax.swing.JButton();
         userpwdField = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(0, 0, 0));
@@ -116,10 +117,10 @@ public class UpdateUser extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton4.setText("Search");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        userSearchButton.setText("Search");
+        userSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                userSearchButtonActionPerformed(evt);
             }
         });
 
@@ -142,7 +143,7 @@ public class UpdateUser extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(useridTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4))
+                                .addComponent(userSearchButton))
                             .addComponent(usertypeTextfield)
                             .addComponent(userpwdField)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -161,7 +162,7 @@ public class UpdateUser extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(useridTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(userSearchButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -236,13 +237,13 @@ public class UpdateUser extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void userSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userSearchButtonActionPerformed
         String cusId = useridTextfield.getText();
         useridTextfield.setText("");
         usernameTextfield.setText("");
         usertypeTextfield.setText("");
 
-        SearchCustomerDAO searchCustomerDAO = new SearchCustomerDAO();
+        SearchUserDAO searchCustomerDAO = new SearchUserDAO();
         SearchCustomerfacade searchCustomerfacade = new SearchCustomerfacade();
         try {
             ResultSet resultSet = searchCustomerDAO.searchFromdb(cusId);
@@ -259,7 +260,7 @@ public class UpdateUser extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SearchProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_userSearchButtonActionPerformed
 
     private void cussaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cussaveButtonActionPerformed
         String userId = useridTextfield.getText();
@@ -291,7 +292,6 @@ public class UpdateUser extends javax.swing.JInternalFrame {
     private javax.swing.JButton cussaveButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -299,6 +299,7 @@ public class UpdateUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton userSearchButton;
     private javax.swing.JTextField useridTextfield;
     private javax.swing.JTextField usernameTextfield;
     private javax.swing.JPasswordField userpwdField;

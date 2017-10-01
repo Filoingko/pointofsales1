@@ -8,12 +8,16 @@ package com.edu.main.view.pos;
 import com.edu.main.dao.pos.PurchaseDAO;
 import com.edu.main.dao.pos.PurchaseE;
 import com.edu.main.facade.pos.Purchasefacade;
+import com.edu.main.view.product.ProductReport;
+import java.awt.print.PrinterException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -74,14 +78,20 @@ public class Purchase extends javax.swing.JInternalFrame {
         cusnameLable = new javax.swing.JLabel();
         cusidLable = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(0, 0, 51));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setPreferredSize(new java.awt.Dimension(1021, 461));
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        customerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Customer"));
+        customerPanel.setBackground(new java.awt.Color(0, 0, 51));
+        customerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        customerPanel.setForeground(new java.awt.Color(255, 255, 255));
         customerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Customer ID :");
         customerPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, 102, 25));
         customerPanel.add(cusidTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 32, 182, -1));
@@ -104,10 +114,12 @@ public class Purchase extends javax.swing.JInternalFrame {
 
         jPanel1.add(customerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 590, 90));
 
-        productdetailPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Product Detail"));
+        productdetailPanel.setBackground(new java.awt.Color(0, 0, 51));
+        productdetailPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product Detail", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         productdetailPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID                : ");
         productdetailPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 44, 92, -1));
 
@@ -135,10 +147,12 @@ public class Purchase extends javax.swing.JInternalFrame {
         productdetailPanel.add(pronameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 71, 201, -1));
 
         jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name            : ");
         productdetailPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 74, 92, -1));
 
         jLabel4.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Price              : ");
         productdetailPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 105, 92, -1));
 
@@ -159,6 +173,7 @@ public class Purchase extends javax.swing.JInternalFrame {
         productdetailPanel.add(protypeTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 134, 201, -1));
 
         jLabel5.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Type             : ");
         productdetailPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 137, 92, -1));
 
@@ -174,6 +189,7 @@ public class Purchase extends javax.swing.JInternalFrame {
         productdetailPanel.add(addtocartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 196, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Qty               : ");
         productdetailPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 168, 92, -1));
 
@@ -186,7 +202,9 @@ public class Purchase extends javax.swing.JInternalFrame {
 
         jPanel1.add(productdetailPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 122, 390, 270));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Items in Cart"));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Items in Cart", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setForeground(new java.awt.Color(0, 0, 51));
 
         cartTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,6 +216,8 @@ public class Purchase extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(cartTable);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Total Amount");
 
         payButton.setText("Pay");
@@ -217,7 +237,7 @@ public class Purchase extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(totalTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -239,7 +259,9 @@ public class Purchase extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 122, 590, -1));
 
-        customerPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Customer"));
+        customerPanel2.setBackground(new java.awt.Color(0, 0, 51));
+        customerPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        customerPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         customerIDButton.setText(" Customer ID");
         customerIDButton.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +269,12 @@ public class Purchase extends javax.swing.JInternalFrame {
                 customerIDButtonActionPerformed(evt);
             }
         });
+
+        cusnameLable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cusnameLable.setForeground(new java.awt.Color(255, 255, 255));
+
+        cusidLable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cusidLable.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout customerPanel2Layout = new javax.swing.GroupLayout(customerPanel2);
         customerPanel2.setLayout(customerPanel2Layout);
@@ -322,7 +350,7 @@ public class Purchase extends javax.swing.JInternalFrame {
                 } else {
                     JOptionPane.showInternalMessageDialog(rootPane, "Error");
                 }
-            }else{
+            } else {
                 JOptionPane.showInternalMessageDialog(rootPane, "Enter quantity");
             }
 
@@ -431,8 +459,18 @@ public class Purchase extends javax.swing.JInternalFrame {
 
             Purchasefacade purchasefacade = new Purchasefacade();
             if (purchasefacade.checkAdd(result)) {
+
+                try {
+                    MessageFormat header = new MessageFormat("Feature Creations");
+
+                    boolean print = cartTable.print(JTable.PrintMode.FIT_WIDTH, header, header);
+                } catch (PrinterException ex) {
+                    Logger.getLogger(ProductReport.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 purchaseDAO.clearCart();
                 updatecart();
+
             } else {
                 JOptionPane.showInternalMessageDialog(rootPane, "Error");
             }
