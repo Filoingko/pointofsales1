@@ -1127,4 +1127,6 @@ public class StocKeeprWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem updateuserMenuItem;
     private javax.swing.JMenu viewMenu;
     // End of variables declaration//GEN-END:variables
+
+    
 }

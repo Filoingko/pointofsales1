@@ -10,8 +10,10 @@ import com.edu.main.dao.pos.PurchaseE;
 import com.edu.main.facade.pos.Purchasefacade;
 import com.edu.main.view.product.ProductReport;
 import java.awt.print.PrinterException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -31,6 +33,7 @@ public class Purchase extends javax.swing.JInternalFrame {
     
     public Purchase() {
         initComponents();
+        addToList();
         productdetailPanel.setVisible(false);
         customerPanel2.setVisible(false);
     }
@@ -58,7 +61,7 @@ public class Purchase extends javax.swing.JInternalFrame {
         addtocartButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         proquantityTextfield = new javax.swing.JTextField();
-        proidTextfield = new javax.swing.JTextField();
+        proidTextfield = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cartTable = new javax.swing.JTable();
@@ -108,12 +111,10 @@ public class Purchase extends javax.swing.JInternalFrame {
 
         productdetailPanel.setBackground(new java.awt.Color(0, 0, 51));
         productdetailPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product Detail", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 255, 255))); // NOI18N
-        productdetailPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID                : ");
-        productdetailPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 44, 92, -1));
 
         productsearchButton.setText("Search");
         productsearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +122,6 @@ public class Purchase extends javax.swing.JInternalFrame {
                 productsearchButtonActionPerformed(evt);
             }
         });
-        productdetailPanel.add(productsearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 40, 80, -1));
 
         pronameTextfield.setEditable(false);
         pronameTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -129,17 +129,14 @@ public class Purchase extends javax.swing.JInternalFrame {
                 pronameTextfieldActionPerformed(evt);
             }
         });
-        productdetailPanel.add(pronameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 71, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name            : ");
-        productdetailPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 74, 92, -1));
 
         jLabel4.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Price              : ");
-        productdetailPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 105, 92, -1));
 
         propriceTextfield.setEditable(false);
         propriceTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +144,6 @@ public class Purchase extends javax.swing.JInternalFrame {
                 propriceTextfieldActionPerformed(evt);
             }
         });
-        productdetailPanel.add(propriceTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 102, 201, -1));
 
         protypeTextfield.setEditable(false);
         protypeTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -155,12 +151,10 @@ public class Purchase extends javax.swing.JInternalFrame {
                 protypeTextfieldActionPerformed(evt);
             }
         });
-        productdetailPanel.add(protypeTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 134, 201, -1));
 
         jLabel5.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Type             : ");
-        productdetailPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 137, 92, -1));
 
         jButton3.setText("Reset");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +162,6 @@ public class Purchase extends javax.swing.JInternalFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        productdetailPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 196, -1, -1));
 
         addtocartButton.setText("Add to Cart");
         addtocartButton.addActionListener(new java.awt.event.ActionListener() {
@@ -176,12 +169,10 @@ public class Purchase extends javax.swing.JInternalFrame {
                 addtocartButtonActionPerformed(evt);
             }
         });
-        productdetailPanel.add(addtocartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 196, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Adobe Caslon Pro", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Qty               : ");
-        productdetailPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 168, 92, -1));
 
         proquantityTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -193,14 +184,70 @@ public class Purchase extends javax.swing.JInternalFrame {
                 proquantityTextfieldActionPerformed(evt);
             }
         });
-        productdetailPanel.add(proquantityTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 165, 201, -1));
 
-        proidTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                proidTextfieldActionPerformed(evt);
-            }
-        });
-        productdetailPanel.add(proidTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 110, -1));
+        javax.swing.GroupLayout productdetailPanelLayout = new javax.swing.GroupLayout(productdetailPanel);
+        productdetailPanel.setLayout(productdetailPanelLayout);
+        productdetailPanelLayout.setHorizontalGroup(
+            productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productdetailPanelLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(proquantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(protypeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(propriceTextfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pronameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(productdetailPanelLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(proidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(productsearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(productdetailPanelLayout.createSequentialGroup()
+                .addGap(193, 193, 193)
+                .addComponent(addtocartButton)
+                .addGap(6, 6, 6)
+                .addComponent(jButton3))
+        );
+        productdetailPanelLayout.setVerticalGroup(
+            productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productdetailPanelLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(productdetailPanelLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel2))
+                    .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(productsearchButton)
+                        .addComponent(proidTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(pronameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(propriceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(protypeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(proquantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(productdetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addtocartButton)
+                    .addComponent(jButton3)))
+        );
 
         jPanel1.add(productdetailPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 122, 390, 270));
 
@@ -335,7 +382,7 @@ public class Purchase extends javax.swing.JInternalFrame {
 
     private void addtocartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addtocartButtonActionPerformed
         try {
-            String proId = proidTextfield.getText();
+            String proId = proidTextfield.getSelectedItem().toString();
             String proName = pronameTextfield.getText();
             String proPrice = propriceTextfield.getText();
             String proType = protypeTextfield.getText();
@@ -377,9 +424,9 @@ public class Purchase extends javax.swing.JInternalFrame {
 
     private void productsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productsearchButtonActionPerformed
         try {
-            String proId = proidTextfield.getText();
+            String proId = proidTextfield.getSelectedItem().toString();
 
-            proidTextfield.setText("");
+            //proidTextfield.setText("");
             pronameTextfield.setText("");
             propriceTextfield.setText("");
             protypeTextfield.setText("");
@@ -392,7 +439,7 @@ public class Purchase extends javax.swing.JInternalFrame {
             ResultSet resultSet = purchaseDAO.searchFromdbproduct(proId);
 
             if (searchProductfacade.checkAvailability(resultSet)) {
-                proidTextfield.setText(resultSet.getString("id"));
+                //proidTextfield.setText(resultSet.getString("id"));
                 pronameTextfield.setText(resultSet.getString("name"));
                 propriceTextfield.setText(Double.toString(resultSet.getDouble("price")));
                 protypeTextfield.setText(resultSet.getString("type"));
@@ -479,10 +526,6 @@ public class Purchase extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_payButtonActionPerformed
 
-    private void proidTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proidTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_proidTextfieldActionPerformed
-
     private void proquantityTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_proquantityTextfieldFocusLost
         String quenty = proquantityTextfield.getText();
 
@@ -501,7 +544,7 @@ public class Purchase extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_proquantityTextfieldFocusLost
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        proidTextfield.setText("");
+        //proidTextfield.setText("");
         pronameTextfield.setText("");
         propriceTextfield.setText("");
         protypeTextfield.setText("");
@@ -535,7 +578,7 @@ public class Purchase extends javax.swing.JInternalFrame {
     private javax.swing.JButton payButton;
     private javax.swing.JPanel productdetailPanel;
     private javax.swing.JButton productsearchButton;
-    private javax.swing.JTextField proidTextfield;
+    private javax.swing.JComboBox proidTextfield;
     private javax.swing.JTextField pronameTextfield;
     private javax.swing.JTextField propriceTextfield;
     private javax.swing.JTextField proquantityTextfield;
@@ -569,7 +612,18 @@ public class Purchase extends javax.swing.JInternalFrame {
     }
 
     private void addToList() {
-
+        try {
+            PurchaseDAO purchaseDAO = new PurchaseDAO();
+            ResultSet resultSet = purchaseDAO.addToList();
+                     
+            while (resultSet.next()) {
+                proidTextfield.addItem(resultSet.getString("id"));
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
