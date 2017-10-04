@@ -16,26 +16,27 @@ import java.util.logging.Logger;
  * @author Gihan Chathuranga
  */
 public class DBConnector {
+
     private static java.sql.Connection conn;
     private static DBConnector dBConnection;
 
     public static Connection connection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        
+
         if (null == dBConnection) {
             conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/pointofsale", "root", "");
         }
         return (Connection) conn;
     }
-    
-    
-   //Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/pointofsale", "root", "");
-        
-    
-//    public static DBConnector getDBConnection() throws SQLException, ClassNotFoundException {
-//        if (null == dBConnection) {
-//            dBConnection = new DBConnector();
-//        }
-//        return dBConnection;
-//    }
+
+    public static DBConnector getDBConnection() throws SQLException, ClassNotFoundException {
+        if (null == dBConnection) {
+            dBConnection = new DBConnector();
+        }
+        return dBConnection;
+    }
+
+    public java.sql.Connection getConnection() {
+        return conn;
+    }
 }
