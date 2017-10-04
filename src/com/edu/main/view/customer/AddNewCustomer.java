@@ -176,7 +176,7 @@ public class AddNewCustomer extends javax.swing.JInternalFrame {
                                 .addComponent(resetButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cancleButton))
-                            .addComponent(errorText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(errorText, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -292,7 +292,7 @@ public class AddNewCustomer extends javax.swing.JInternalFrame {
             if (!(cusId.equals("")) && !(cusName.equals("")) && !(cusNIC.equals("")) && !(cusEmail.equals("")) && !(cusContactno.equals(""))) {
                 if (addNewCustomer.checkInt(cusNIC)) {
                     if (addNewCustomer.validateEmail(cusEmail)) {
-                        if (addNewCustomer.checkInt(cusContactno)) {
+                        if (addNewCustomer.validayeNumber(cusContactno)) {
                             result = addNewCustomerDAO.addTodb(cusId, cusName, cusNIC, cusEmail, cusContactno);
                             if (addNewCustomer.checkUpdate(result)) {
                                 JOptionPane.showInternalMessageDialog(this, "Added Sucess");

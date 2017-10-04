@@ -27,6 +27,7 @@ public class MainReport extends javax.swing.JInternalFrame {
     public MainReport() {
         initComponents();
         runfirst();
+        searchbyDatePanel.setVisible(false);
     }
 
     /**
@@ -45,9 +46,9 @@ public class MainReport extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         searchbyproductButton = new javax.swing.JButton();
         searchbyproducttext = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        searchbydateButton = new javax.swing.JTextField();
+        searchbyDatePanel = new javax.swing.JPanel();
+        searchbydateButton = new javax.swing.JButton();
+        searchbydate = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         searchbycustomerButton = new javax.swing.JButton();
         searchbycustomrtext = new javax.swing.JTextField();
@@ -61,6 +62,11 @@ public class MainReport extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Usuzi", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Purchase Report");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1);
         jLabel1.setBounds(310, 20, 300, 40);
 
@@ -111,33 +117,38 @@ public class MainReport extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(770, 80, 210, 100);
 
-        jPanel5.setBackground(new java.awt.Color(0, 0, 51));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search By Date", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        searchbyDatePanel.setBackground(new java.awt.Color(0, 0, 51));
+        searchbyDatePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search By Date", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jButton3.setText("Search");
+        searchbydateButton.setText("Search");
+        searchbydateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchbydateButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout searchbyDatePanelLayout = new javax.swing.GroupLayout(searchbyDatePanel);
+        searchbyDatePanel.setLayout(searchbyDatePanelLayout);
+        searchbyDatePanelLayout.setHorizontalGroup(
+            searchbyDatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchbyDatePanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(searchbydateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(searchbyDatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(searchbydate, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchbydateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(searchbydateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+        searchbyDatePanelLayout.setVerticalGroup(
+            searchbyDatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchbyDatePanelLayout.createSequentialGroup()
+                .addComponent(searchbydate, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(searchbydateButton)
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel5);
-        jPanel5.setBounds(770, 300, 210, 100);
+        jPanel1.add(searchbyDatePanel);
+        searchbyDatePanel.setBounds(770, 300, 210, 100);
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search By Customer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -197,6 +208,10 @@ public class MainReport extends javax.swing.JInternalFrame {
             if (resultSet == null) {
                 JOptionPane.showMessageDialog(this, "Wrong product ID!");
             } else {
+                if (!resultSet.next()) {
+                    JOptionPane.showMessageDialog(this, "No dta found!");
+                }
+                resultSet.beforeFirst();
                 DefaultTableModel model = (DefaultTableModel) reportTable.getModel();
                 model.setRowCount(0);
                 while (resultSet.next()) {
@@ -214,13 +229,17 @@ public class MainReport extends javax.swing.JInternalFrame {
     private void searchbycustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbycustomerButtonActionPerformed
         try {
             String cusid = searchbycustomrtext.getText();
-            
+
             MainReportDAO cusReportDAO = new MainReportDAO();
             ResultSet resultSet = cusReportDAO.searchBycustomer(cusid);
-            
+
             if (resultSet == null) {
                 JOptionPane.showMessageDialog(this, "Wrong Customer ID!");
             } else {
+                if (!resultSet.next()) {
+                    JOptionPane.showMessageDialog(this, "No dta found!");
+                }
+                resultSet.beforeFirst();
                 DefaultTableModel model = (DefaultTableModel) reportTable.getModel();
                 model.setRowCount(0);
                 while (resultSet.next()) {
@@ -235,19 +254,46 @@ public class MainReport extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_searchbycustomerButtonActionPerformed
 
+    private void searchbydateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbydateButtonActionPerformed
+        try {
+            String dateselect = searchbydate.getText();
+            MainReportDAO ReportDAO = new MainReportDAO();
+            ResultSet resultSet = ReportDAO.searchBydate(dateselect);
+
+            if (resultSet == null) {
+                JOptionPane.showMessageDialog(this, "Wrong Date!");
+            } else {
+                DefaultTableModel model = (DefaultTableModel) reportTable.getModel();
+                model.setRowCount(0);
+                while (resultSet.next()) {
+                    Object[] rowData = {resultSet.getString("product_id"), resultSet.getString("customer_id"), resultSet.getString("qty"), resultSet.getString("total_price"), resultSet.getString("date")};
+                    model.addRow(rowData);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainReport.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_searchbydateButtonActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        runfirst();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable reportTable;
+    private javax.swing.JPanel searchbyDatePanel;
     private javax.swing.JButton searchbycustomerButton;
     private javax.swing.JTextField searchbycustomrtext;
-    private javax.swing.JTextField searchbydateButton;
+    private javax.swing.JTextField searchbydate;
+    private javax.swing.JButton searchbydateButton;
     private javax.swing.JButton searchbyproductButton;
     private javax.swing.JTextField searchbyproducttext;
     // End of variables declaration//GEN-END:variables

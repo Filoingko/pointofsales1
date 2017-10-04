@@ -295,7 +295,6 @@ public class Login extends javax.swing.JFrame {
 
             // setTheme(String themeName, String licenseKey, String logoString)
             com.jtattoo.plaf.acryl.AcrylLookAndFeel.setTheme("Black", "INSERT YOUR LICENSE KEY HERE", "my company");
-
             // select the Look and Feel
             UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
 

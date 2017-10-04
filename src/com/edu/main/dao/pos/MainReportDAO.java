@@ -51,7 +51,7 @@ public class MainReportDAO {
     public ResultSet searchBycustomer(String cusid) throws ClassNotFoundException, SQLException {
         Connection connection = dbconnect();
 
-        String sql = " select * From purches;";
+        String sql = " select * From purches where customer_id = "+cusid+" ;";
 
         Class.forName("com.mysql.jdbc.Driver");
         Statement stm = connection.createStatement();
@@ -59,5 +59,17 @@ public class MainReportDAO {
 
         return result;
     
+    }
+
+    public ResultSet searchBydate(String dateof) throws ClassNotFoundException, SQLException {
+       Connection connection = dbconnect();
+
+        String sql = " select * From purches where date = " + dateof + ";";
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Statement stm = connection.createStatement();
+        ResultSet result = stm.executeQuery(sql);
+
+        return result;
     }
 }

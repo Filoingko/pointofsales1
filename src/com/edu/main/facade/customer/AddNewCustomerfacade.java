@@ -36,8 +36,18 @@ public class AddNewCustomerfacade {
         return m.matches();
     }
 
-    public boolean validayeNumber(){
-        
-        return false;
+    public boolean validayeNumber(String cusContactno) {
+
+        try {
+            int tp = Integer.parseInt(cusContactno);
+            if (cusContactno.length() == 10) {
+                   return true;
+            }else{
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
     }
 }

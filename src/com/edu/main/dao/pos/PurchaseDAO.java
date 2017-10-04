@@ -135,4 +135,16 @@ public class PurchaseDAO {
 
         return result;
     }
+
+    public ResultSet addToList() throws ClassNotFoundException, SQLException {
+        Connection connection = dbconnect();
+        
+        String sql="select * from products";
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        Statement stm=connection.createStatement();
+	ResultSet result = stm.executeQuery(sql);
+        
+        return result;
+    }
 }
